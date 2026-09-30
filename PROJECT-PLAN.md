@@ -8,7 +8,7 @@ A practical Microsoft hybrid enterprise security portfolio for Baltic Finance. T
 
 | Day | Goal and scope | Required validation | Status |
 |---|---|---|---|
-| 01 | Local Windows Server, AD DS, DNS, OU structure, users, security groups | DNS, AD queries, DC health, evidence | Configuration and listed server-side tests completed; screenshots pending |
+| 01 | Local Windows Server, AD DS, DNS, OU structure, users, security groups | DNS, AD queries, DC health, evidence | Configuration and listed server-side tests completed |
 | 02 | AD administration, GPO, password/lockout policy, firewall, screen lock, share mapping, local administrator management | In-scope vs out-of-scope GPO; gpupdate and gpresult | Not started |
 | 03 | Separate admin identities, least privilege, Windows LAPS where supported, service account, auditing and group-change monitoring | Standard-user denial vs authorized administration; logs | Not started; dedicated account created without privileges on Day 01 |
 | 04 | Entra Connect or Cloud Sync, UPN, password hash synchronization, OU scope, users and groups | In-scope synchronization; excluded user absent | Not started |
