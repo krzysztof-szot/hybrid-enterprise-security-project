@@ -42,4 +42,4 @@ Document objective, context, configuration, security rationale, troubleshooting,
 
 ## Next action
 
-Upload and review Day 01 screenshots against the evidence checklist. Then prepare a supported local Windows 11 client for AD join and Day 02 tests. Do not add empty folders for future work.
+Then prepare a supported local Windows 11 client for AD join and Day 02 tests. Do not add empty folders for future work.
