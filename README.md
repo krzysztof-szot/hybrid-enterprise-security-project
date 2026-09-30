@@ -4,7 +4,7 @@ A hands-on Microsoft hybrid security lab for the fictional organization **Baltic
 
 ## Current status
 
-**Day 01 configuration and listed server-side checks completed on 2026-09-30. Screenshot upload pending.**
+**Day 01 configuration and listed server-side checks completed on 2026-09-30. **
 
 Implemented: one local Windows Server 2025 domain controller, AD DS, DNS, organizational units, users, security groups, and external time synchronization. No Azure, Entra synchronization, Intune, Defender cloud integration, or Sentinel deployment has been completed.
 
