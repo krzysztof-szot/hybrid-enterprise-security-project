@@ -11,7 +11,7 @@ A practical Microsoft hybrid enterprise security portfolio for Baltic Finance. T
 | 01 | Local Windows Server, AD DS, DNS, OU structure, users, security groups | DNS, AD queries, DC health, evidence | Configuration and listed server-side tests completed |
 | 02 | AD administration, GPO, password/lockout policy, firewall, screen lock, share mapping, local administrator management | In-scope vs out-of-scope GPO; gpupdate and gpresult | Recorded configuration and tests completed on 2026-10-01; see docs/day-02.md and tests/day-02.md |
 | 03 | Separate admin identities, least privilege, Windows LAPS where supported, service account, auditing and group-change monitoring | Standard-user denial vs authorized administration; logs | Recorded scope completed on 2026-10-01; see docs/day-03.md and tests/day-03.md |
-| 04 | Cloud Sync, UPN, password hash synchronization, pilot group scope, users and groups | In-scope synchronization; excluded user absent | Recorded scope completed on 2026-10-01; see docs/day-04.md and tests/day-04.md; IE ESC restoration confirmation pending |
+| 04 | Cloud Sync, UPN, password hash synchronization, pilot group scope, users and groups | In-scope synchronization; excluded user absent | Recorded scope completed on 2026-10-01; see docs/day-04.md and tests/day-04.md |
 | 05 | Controlled hybrid identity troubleshooting | Problem → Investigation → Root Cause → Resolution → Verification | Not started |
 | 06 | Windows 11, Entra Join, Intune enrollment, ownership and primary user | Device identity, join type and enrollment verification | Not started |
 | 07 | Justified Intune configuration profiles and security baseline | Policy assignment and endpoint results | Not started |
