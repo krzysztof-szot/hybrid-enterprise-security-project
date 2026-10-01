@@ -88,7 +88,6 @@ Only Anna's password-based cloud sign-in was tested. No claim is made for initia
 
 ## Limitations and follow-up
 
-- Confirm IE ESC restoration on BFL-DC01.
 - Group-based scope is a pilot choice; revisit OU/attribute scope for broader deployment.
 - The exact agent version, agent gMSA ACLs, deletion-protection threshold and notification configuration were not captured.
 - No exported provisioning/sign-in logs, agent failover test, password-change propagation timing test or comprehensive matching audit.
