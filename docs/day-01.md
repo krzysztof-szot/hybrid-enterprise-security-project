@@ -1,6 +1,6 @@
 # Day 01 — Active Directory Foundation
 
-Date: 2026-09-30. Status: configuration and listed server-side tests completed; screenshot upload pending.
+Date: 2026-09-30. Status: configuration and listed server-side tests completed; seven screenshots published. This page records the Day 01 state; see [Day 02](day-02.md) for subsequent changes.
 
 ## Objective and context
 
@@ -112,13 +112,13 @@ A plan is not evidence: missing OUs were detected by querying AD. Installing the
 
 ## Remaining work and limitations
 
-- Upload the [pending screenshots](../evidence/day-01/README.md); console excerpts are already documented.
+- The [seven screenshots](../evidence/day-01/README.md) and console excerpts are published.
 - Client domain join, first-password-change logon, GPO application, and access-denial tests were not performed.
 - No second DC, replication-partner test, backup/restore test or comprehensive security assessment.
 - No persistent event-log export was collected; console diagnostics are not event-log evidence.
 - Only one NTP source; VMware time synchronization interaction and behavior after suspend/reboot remain untested.
 - Final patch inventory was not captured.
-- Next day: prepare a local domain-joined client before GPO testing.
+- Follow-up: client provisioning and GPO tests were subsequently performed on [Day 02](day-02.md).
 
 ## References
 

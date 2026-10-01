@@ -8,7 +8,7 @@
 - Do not spawn agents unless explicitly requested.
 - Investigate symptoms, configuration, and logs before proposing the smallest fix. Never rebuild by default.
 - Never invent screenshots, logs, results, or PASS statuses. Separate owner-confirmed actions from supplied command output and from unperformed tests.
-- Screenshots for Day 01 are pending upload. Add links only after the actual files exist and have been reviewed.
+- Day 01 and Day 02 screenshots are published. Add future evidence links only after the actual files exist and have been reviewed. Request only key screenshots and give their filenames in advance.
 - Keep credentials and personal information out of commits. Mask unnecessary identifiers before publication.
 - Prefer local resources. Explain cloud costs before provisioning, delay trials until needed, and plan cleanup.
 - Preserve Baltic Finance / BFL naming and existing objects. Create folders only when needed.

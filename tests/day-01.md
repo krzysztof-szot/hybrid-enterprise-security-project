@@ -1,6 +1,6 @@
 # Day 01 — test record
 
-Executed by the owner on 2026-09-30. PASS means the stated check was performed and its reported result matches the expectation; it does not certify the whole environment. Evidence consists of [selected supplied console output](../evidence/day-01/console-excerpts.md) and observations identified below. [Screenshots are pending upload](../evidence/day-01/README.md).
+Executed by the owner on 2026-09-30. PASS means the stated check was performed and its reported result matches the expectation; it does not certify the whole environment. Evidence consists of [selected supplied console output](../evidence/day-01/console-excerpts.md) and observations identified below. [Published screenshots](../evidence/day-01/README.md).
 
 | ID | Preconditions | Procedure | Expected result | Actual result | Status | Evidence |
 |---|---|---|---|---|---|---|
@@ -12,7 +12,7 @@ Executed by the owner on 2026-09-30. PASS means the stated check was performed a
 | D01-06 | Local DNS available | Resolve-DnsName _ldap._tcp.dc._msdcs.balticfinance.test -Type SRV -Server 192.168.58.10 | DC target and LDAP port 389 | Correct target, port and additional A record | PASS | DNS |
 | D01-07 | DNS forwarder configured | Get-DnsServerForwarder; Resolve-DnsName www.microsoft.com -Type A -DnsOnly -Server 192.168.58.10 | External answer through DC DNS | Forwarder .2; CNAME/A response | PASS | DNS; this does not separately prove which upstream path was used |
 | D01-08 | Elevated session on DC | dcdiag /test:DNS /DnsBasic /v | Connectivity, Auth and Basc pass | PASS; other DNS columns n/a | PASS | DNS; no claim for unexecuted subtests |
-| D01-09 | OUs created | Get-ADOrganizationalUnit with SearchBase under BFL | Required hierarchy and protection | Initial missing departments detected, then corrected; first ten protection values True; Groups creation succeeded | PASS for presence; Groups protection re-query pending | Supplied OU outputs recorded in Day 01 notes; final tree screenshot pending |
+| D01-09 | OUs created | Get-ADOrganizationalUnit with SearchBase under BFL | Required hierarchy and protection | Initial missing departments detected, then corrected; first ten protection values True; Groups creation succeeded | PASS for presence; Groups protection re-query pending | Supplied OU outputs recorded in Day 01 notes; published final tree screenshot |
 | D01-10 | Five users created | Get-ADUser with Department, pwdLastSet, PasswordNeverExpires | Correct locations, enabled, first-change required | Matched for four staff and adm.onprem | PASS | Users excerpt and supplied per-user query summarized there |
 | D01-11 | Groups created and members added | Get-ADGroup; Get-ADGroupMember | Four Global/Security groups; counts 2/1/1/0 | Matched | PASS | Groups; supplied creation verification |
 | D01-12 | adm.onprem created without privilege assignment | Get-ADPrincipalGroupMembership adm.onprem | Domain Users only | Domain Users only | PASS | Users; membership check, not a negative authorization test |
@@ -21,7 +21,9 @@ Executed by the owner on 2026-09-30. PASS means the stated check was performed a
 | D01-15 | Time-zone correction applied | Get-TimeZone | Central European Standard Time | Matched | PASS | Time zone and activation |
 | D01-16 | Evaluation installed and online | slmgr.vbs /xpr | Active evaluation with future expiration | Expiration 29.03.2027 15:10:07 as displayed | PASS | Time zone and activation |
 
-## Not performed / not independently verified
+## Not performed / not independently verified on Day 01
+
+Client and GPO follow-up tests are recorded separately in [Day 02](day-02.md).
 
 | Check | Status and reason |
 |---|---|
@@ -35,7 +37,7 @@ Executed by the owner on 2026-09-30. PASS means the stated check was performed a
 | Full dcdiag / all DNS subtests | NOT RUN — only listed subsets executed |
 | Event-log verification | NOT RUN — no event-log export supplied |
 | NTP persistence after reboot/suspend | NOT RUN |
-| Screenshot publication | PENDING |
+| Screenshot publication | COMPLETE — seven images published |
 
 ## Useful commands for reproducing the completed checks
 
