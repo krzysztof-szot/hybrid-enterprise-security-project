@@ -64,5 +64,3 @@ The owner then confirmed all four requested final checks were correct, with no e
 2. adm.onprem and tst.lockout absent from Entra.
 3. Original anna.finance and peter.finance accounts remain On-premises sync enabled=No.
 4. New Cloud Sync configuration has the expected status.
-
-These are OWNER-CONFIRMED observations. No extra screenshot or raw export was supplied for these four final checks.
