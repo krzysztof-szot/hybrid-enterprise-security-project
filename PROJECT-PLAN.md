@@ -36,7 +36,6 @@ A practical Microsoft hybrid enterprise security portfolio for Baltic Finance. T
 - One NTP source and one DC are lab limitations. VMware host/guest time synchronization settings have not been inspected.
 - The owner reported an existing Azure free subscription with USD 200 credit and Entra ID P2. No additional trial or Azure compute resource was created in the recorded steps; balances and expiration dates remain unverified.
 - Cloud Sync is a pilot scoped to GG-Finance, GG-IT and GG-Security direct membership, replacing the original OU-scope plan. The old bfl.local configuration was disabled. BFL-DC01 hosts the sole active lab agent.
-- Confirm IE ESC was restored to On for Administrators after agent setup; no explicit completion evidence was supplied.
 
 ## Daily completion standard
 
