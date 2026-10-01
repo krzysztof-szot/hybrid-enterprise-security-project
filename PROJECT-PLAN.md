@@ -44,4 +44,4 @@ Document objective, context, configuration, security rationale, troubleshooting,
 
 ## Next action
 
-Confirm IE ESC restoration, then begin Day 05 controlled hybrid identity troubleshooting using the current pilot. Preserve prior exercises and use a reversible change with verification. Do not add empty folders for future work.
+Begin Day 05 controlled hybrid identity troubleshooting using the current pilot. Preserve prior exercises and use a reversible change with verification. Do not add empty folders for future work.
