@@ -65,4 +65,4 @@ The owner then confirmed all four requested final checks were correct, with no e
 3. Original anna.finance and peter.finance accounts remain On-premises sync enabled=No.
 4. New Cloud Sync configuration has the expected status.
 
-These are OWNER-CONFIRMED observations. No extra screenshot or raw export was supplied for these four final checks. IE ESC restoration was requested but not explicitly confirmed.
+These are OWNER-CONFIRMED observations. No extra screenshot or raw export was supplied for these four final checks.
