@@ -17,7 +17,7 @@ A practical Microsoft hybrid enterprise security portfolio for Baltic Finance. T
 | 07 | Justified Intune configuration profiles and security baseline | Policy assignment and endpoint results | Recorded pilot scope completed on 2026-10-02; see docs/day-07.md and tests/day-07.md |
 | 08 | Compliance plus Conditional Access requiring compliant devices | Allowed compliant device; blocked non-compliant device; sign-in logs | Recorded pilot scope completed on 2026-10-02; see docs/day-08.md and tests/day-08.md |
 | 09 | Defender Antivirus, firewall, BitLocker, ASR; optional MDE, Tamper Protection and key rotation | Selected positive/negative endpoint tests, onboarding and rotation status | Recorded pilot scope completed on 2026-10-02; see docs/day-09.md and tests/day-09.md |
-| 10 | Azure RBAC: Reader, Contributor, Security Reader, Storage Blob Data Reader | Authorized operation vs denied change; distinguish Entra roles and Azure RBAC | Not started |
+| 10 | Azure RBAC: Reader, Contributor, Security Reader, Storage Blob Data Reader | Authorized operation vs denied change; distinguish Entra roles and Azure RBAC | Recorded scope and cleanup completed on 2026-10-02; see docs/day-10.md and tests/day-10.md |
 | 11 | Key Vault, managed identity and access control | Authorized secret read vs denied identity; no hard-coded credentials | Not started |
 | 12 | VNet, subnets, NSGs; temporary test resource only when needed | Allowed and blocked traffic; resource cleanup | Not started |
 | 13 | Defender for Cloud recommendations and posture | Finding → Risk → Recommendation → Remediation → Verification | Not started |
@@ -34,7 +34,7 @@ A practical Microsoft hybrid enterprise security portfolio for Baltic Finance. T
 - adm.onprem belongs to Domain Users and GG-Workstation-Admins; elevated workstation operation passed while Anna was denied. It is excluded from cloud synchronization.
 - Windows LAPS manages labadmin with encrypted AD backup; rotation and Anna's lack of read access were tested. gmsa-labtask resides in Service Accounts, is authorized for BFL-WKS01 and runs a manually triggered test task. The Cloud Sync agent uses a separate service identity.
 - One NTP source and one DC are lab limitations. VMware host/guest time synchronization settings have not been inspected.
-- The owner reported an existing Azure free subscription with USD 200 credit and Entra ID P2. No additional trial or Azure compute resource was created in the recorded steps; balances and expiration dates remain unverified.
+- The owner originally reported an Azure free subscription and Entra ID P2. On 2026-10-02, Azure subscription 1 was Active in Baltic Finance Lab, with EUR 159.53 credit remaining and expiry 2026-10-13 (owner-confirmed); exact offer type remains unidentified. Day 10 used a temporary Storage account, subsequently cleaned up. No new Azure compute resource was created during Day 10. Existing resources seen in the portal were outside that exercise.
 - Cloud Sync is a pilot scoped to GG-Finance, GG-IT and GG-Security direct membership, replacing the original OU-scope plan. The old bfl.local configuration was disabled. BFL-DC01 hosts the sole active lab agent.
 
 - Day 05 added tst.sync through GG-IT after a controlled scope failure. The test identity is retained in both directories with AD Enabled=False and cloud AccountEnabled=False; GG-IT membership remains. The pilot therefore contains four staff identities plus one disabled test identity.
@@ -47,10 +47,12 @@ A practical Microsoft hybrid enterprise security portfolio for Baltic Finance. T
 
 - Day 09 deployed dedicated endpoint policies to the BFL-WKS02 pilot. Quick scan, quarantine after the EICAR exercise, firewall block/recovery and ASR audit/block were observed. Only the obfuscated-script rule was promoted to Block; five selected rules remain Audit. The temporary Edge block rule remains Disabled. Existing M365 E5 licensing was used for MDE onboarding; connector Available, device Onboarded/Active and managed Tamper Protection On were verified. Manual BitLocker rotation completed; a new Key Id and C: On are owner-confirmed. No EDR alert/response or boot-recovery test was performed. Final firewall logging values and demonstration-script cleanup remain unconfirmed.
 
+- Day 10 tested Reader and Contributor at rg-bfl-rbac-lab scope, Security Reader at subscription scope, and Storage Blob Data Reader at container scope. Tag read/write outcomes, disabled Contributor role-assignment UI, security-view access, Blob read/write denial and post-revocation denial were recorded. The temporary group/account were cleaned up; subscription Security Reader removal is owner-confirmed. Final Storage settings export and actual costs were not collected.
+
 ## Daily completion standard
 
 Document objective, context, configuration, security rationale, troubleshooting, result and lessons learned. Record test preconditions, procedure, expected/actual result, status and evidence. Never mark an unperformed test PASS.
 
 ## Next action
 
-Begin Day 10 by inspecting the existing Azure subscription, effective role assignments and scopes, remaining credits and trial expiry. Plan Reader, Contributor, Security Reader and Storage Blob Data Reader comparisons using authorized and denied operations; distinguish management-plane and data-plane access. Preserve the completed endpoint pilot. Confirm the outstanding demonstration-script cleanup and record any later firewall-log validation separately. Avoid unnecessary paid resources and do not add empty folders for future work.
+Begin Day 11 by inspecting existing suitable Azure resources, their current configuration and costs before selecting a Key Vault and managed-identity test path. Plan an authorized secret read and a denied identity using a non-sensitive test secret, with no hard-coded credentials. Recheck credit and the 2026-10-13 expiry before provisioning. Day 10 resources were cleaned up; do not assume its Storage account still exists. Preserve earlier completed lab stages and do not add empty future folders.
