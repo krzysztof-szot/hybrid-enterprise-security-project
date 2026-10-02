@@ -15,7 +15,7 @@ A practical Microsoft hybrid enterprise security portfolio for Baltic Finance. T
 | 05 | Controlled hybrid identity troubleshooting | Problem → Investigation → Root Cause → Resolution → Verification | Recorded scope completed on 2026-10-02; see docs/day-05.md and tests/day-05.md |
 | 06 | Windows 11, Entra Join, Intune enrollment, ownership and primary user | Device identity, join type and enrollment verification | Recorded scope completed on 2026-10-02; see docs/day-06.md and tests/day-06.md |
 | 07 | Justified Intune configuration profiles and security baseline | Policy assignment and endpoint results | Recorded pilot scope completed on 2026-10-02; see docs/day-07.md and tests/day-07.md |
-| 08 | Compliance plus Conditional Access requiring compliant devices | Allowed compliant device; blocked non-compliant device; sign-in logs | Not started |
+| 08 | Compliance plus Conditional Access requiring compliant devices | Allowed compliant device; blocked non-compliant device; sign-in logs | Recorded pilot scope completed on 2026-10-02; see docs/day-08.md and tests/day-08.md |
 | 09 | Defender Antivirus, firewall, BitLocker, ASR where available; optional MDE | Endpoint security configuration and tests | Not started |
 | 10 | Azure RBAC: Reader, Contributor, Security Reader, Storage Blob Data Reader | Authorized operation vs denied change; distinguish Entra roles and Azure RBAC | Not started |
 | 11 | Key Vault, managed identity and access control | Authorized secret read vs denied identity; no hard-coded credentials | Not started |
@@ -43,10 +43,12 @@ A practical Microsoft hybrid enterprise security portfolio for Baltic Finance. T
 
 - Day 07 targets BFL-Intune-Pilot-Devices with session-lock, Edge SmartScreen and a tailored Windows 25H2 baseline. Five-minute lock and blocked-site behavior passed; baseline report and post-restart checks passed. Incorrect session-lock exclusion was corrected. Baseline exceptions reserve dedicated AV/ASR/firewall/BitLocker work for Day 09; inspect effective settings before that stage. Individual baseline controls and snapshot recovery were not all tested.
 
+- Day 08 adds BFL-WIN-Compliance-Pilot (Firewall, Antivirus and TPM required) and CA-BFL-Pilot-Require-Compliant-Device for Anna / Office 365. Report-only evaluation, enforced allow, controlled OS-version denial and recovery passed for Outlook Web. Final device Compliant and CA On are owner-confirmed. The temporary OS requirement was removed. The tenant no-policy default remains Compliant; emergency-account sign-in was not tested.
+
 ## Daily completion standard
 
 Document objective, context, configuration, security rationale, troubleshooting, result and lessons learned. Record test preconditions, procedure, expected/actual result, status and evidence. Never mark an unperformed test PASS.
 
 ## Next action
 
-Begin Day 08 by inspecting existing compliance and Conditional Access policies. Scope new policies to the pilot, preserve emergency administrative access and existing tenant exercises, then verify allowed and denied access with sign-in logs. Do not treat the existing Compliant badge as proof of a new compliance policy. Do not add empty folders for future work.
+Begin Day 09 by inspecting effective Defender Antivirus, firewall, BitLocker and ASR settings on BFL-WKS02. Compare existing Intune assignments and Day 07 baseline exceptions before adding dedicated policies. Preserve Day 08 compliance and Conditional Access enforcement. Use the existing trial where suitable; verify licensing and costs before optional MDE integration or other cloud changes. Do not add empty folders for future work.
