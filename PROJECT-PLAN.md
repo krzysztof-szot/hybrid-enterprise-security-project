@@ -14,7 +14,7 @@ A practical Microsoft hybrid enterprise security portfolio for Baltic Finance. T
 | 04 | Cloud Sync, UPN, password hash synchronization, pilot group scope, users and groups | In-scope synchronization; excluded user absent | Recorded scope completed on 2026-10-01; see docs/day-04.md and tests/day-04.md |
 | 05 | Controlled hybrid identity troubleshooting | Problem → Investigation → Root Cause → Resolution → Verification | Recorded scope completed on 2026-10-02; see docs/day-05.md and tests/day-05.md |
 | 06 | Windows 11, Entra Join, Intune enrollment, ownership and primary user | Device identity, join type and enrollment verification | Recorded scope completed on 2026-10-02; see docs/day-06.md and tests/day-06.md |
-| 07 | Justified Intune configuration profiles and security baseline | Policy assignment and endpoint results | Not started |
+| 07 | Justified Intune configuration profiles and security baseline | Policy assignment and endpoint results | Recorded pilot scope completed on 2026-10-02; see docs/day-07.md and tests/day-07.md |
 | 08 | Compliance plus Conditional Access requiring compliant devices | Allowed compliant device; blocked non-compliant device; sign-in logs | Not started |
 | 09 | Defender Antivirus, firewall, BitLocker, ASR where available; optional MDE | Endpoint security configuration and tests | Not started |
 | 10 | Azure RBAC: Reader, Contributor, Security Reader, Storage Blob Data Reader | Authorized operation vs denied change; distinguish Entra roles and Azure RBAC | Not started |
@@ -41,10 +41,12 @@ A practical Microsoft hybrid enterprise security portfolio for Baltic Finance. T
 
 - Day 06 uses the existing M365 E5 trial (approximately three weeks remaining, owner-reported on 2026-10-02). Anna's Intune license assignment and membership in BFL-Intune-Pilot-Users were confirmed; automatic MDM scope is Some for that group. Exact trial expiration remains unrecorded. The visible Compliant badge is not a custom-policy test.
 
+- Day 07 targets BFL-Intune-Pilot-Devices with session-lock, Edge SmartScreen and a tailored Windows 25H2 baseline. Five-minute lock and blocked-site behavior passed; baseline report and post-restart checks passed. Incorrect session-lock exclusion was corrected. Baseline exceptions reserve dedicated AV/ASR/firewall/BitLocker work for Day 09; inspect effective settings before that stage. Individual baseline controls and snapshot recovery were not all tested.
+
 ## Daily completion standard
 
 Document objective, context, configuration, security rationale, troubleshooting, result and lessons learned. Record test preconditions, procedure, expected/actual result, status and evidence. Never mark an unperformed test PASS.
 
 ## Next action
 
-Begin Day 07 by inspecting existing Intune policies and assignments, then select justified configuration settings for the BFL-WKS02 pilot and verify endpoint results. Preserve earlier tenant exercises. Custom compliance and Conditional Access tests remain Day 08. Do not add empty folders for future work.
+Begin Day 08 by inspecting existing compliance and Conditional Access policies. Scope new policies to the pilot, preserve emergency administrative access and existing tenant exercises, then verify allowed and denied access with sign-in logs. Do not treat the existing Compliant badge as proof of a new compliance policy. Do not add empty folders for future work.
