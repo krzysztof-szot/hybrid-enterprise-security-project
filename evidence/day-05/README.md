@@ -22,6 +22,6 @@ BFL Sync Test has action Create, source Active Directory, target Microsoft Entra
 
 ## Supplemental text
 
-[Console and portal excerpts](console-excerpts.md) record retained GG-IT membership, AD Enabled=False, and the subsequent cloud export AccountEnabled=False. No fourth screenshot or denied-login result is claimed.
+[Console and portal excerpts](console-excerpts.md) record retained GG-IT membership, AD Enabled=False, and the subsequent cloud export AccountEnabled=False.
 
 [Implementation](../../docs/day-05.md) · [Tests](../../tests/day-05.md)
