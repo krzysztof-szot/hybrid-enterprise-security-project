@@ -4,9 +4,9 @@ A hands-on Microsoft hybrid security lab for the fictional organization **Baltic
 
 ## Current status
 
-**Days 01–04: recorded functional scope completed. Latest lab session: 2026-10-01.**
+**Days 01–05: recorded functional scope completed. Latest lab session: 2026-10-02.**
 
-Implemented: one local Windows Server 2025 domain controller, AD DS, DNS, organizational units, users, security groups, and external time synchronization. Day 02 adds a domain-joined Windows 11 workstation, scoped GPOs, password/lockout policy, session-lock testing, Finance share authorization and mapping, and local administrator group management. Day 03 adds a tested administrative identity, encrypted Windows LAPS, group-change auditing and a working gMSA task. Day 04 connects the existing Entra tenant through a Cloud Sync pilot; Anna's cloud login with her AD password succeeded (owner-confirmed). No Intune, new Azure workload, Defender cloud integration or Sentinel deployment was performed in this project.
+Implemented: one local Windows Server 2025 domain controller, AD DS, DNS, organizational units, users, security groups, and external time synchronization. Day 02 adds a domain-joined Windows 11 workstation, scoped GPOs, password/lockout policy, session-lock testing, Finance share authorization and mapping, and local administrator group management. Day 03 adds a tested administrative identity, encrypted Windows LAPS, group-change auditing and a working gMSA task. Day 04 connects the existing Entra tenant through a Cloud Sync pilot; Anna's cloud login with her AD password succeeded (owner-confirmed). Day 05 diagnoses a controlled group-scope exclusion, verifies creation after correction and propagates the test account's disabled state to Entra ID. No Intune, new Azure workload, Defender cloud integration or Sentinel deployment was performed in this project.
 
 - [Day 01 implementation and troubleshooting](docs/day-01.md)
 - [Day 01 test record](tests/day-01.md)
@@ -18,6 +18,7 @@ Implemented: one local Windows Server 2025 domain controller, AD DS, DNS, organi
 - [Day 02 console evidence](evidence/day-02/console-excerpts.md)
 - [Day 03 implementation](docs/day-03.md) · [Tests](tests/day-03.md) · [Evidence](evidence/day-03/README.md)
 - [Day 04 implementation](docs/day-04.md) · [Tests](tests/day-04.md) · [Evidence](evidence/day-04/README.md)
+- [Day 05 troubleshooting](docs/day-05.md) · [Tests](tests/day-05.md) · [Evidence](evidence/day-05/README.md)
 - [Project roadmap](PROJECT-PLAN.md)
 
 ## Implemented architecture
@@ -31,8 +32,10 @@ flowchart LR
     DC -->|"External DNS forwarding"| DNS["VMware DNS proxy: 192.168.58.2"]
     DC -->|"NTP client"| NTP["time.windows.com"]
     WKS -->|"Encrypted LAPS backup"| DC
-    DC -->|"Cloud Sync agent: 4 pilot users / 3 groups / password hashes"| Entra["Microsoft Entra ID\nBaltic Finance Lab"]
+    DC -->|"Cloud Sync agent: selected groups / password hashes"| Entra["Microsoft Entra ID\nBaltic Finance Lab"]
 ```
+
+The pilot now includes four staff identities and one retained, disabled test identity (tst.sync), scoped through three security groups.
 
 The DC's IPv4 DNS client uses 127.0.0.1. NAT provides outbound connectivity; it is not a complete isolation boundary.
 
@@ -44,6 +47,6 @@ The project emphasizes least privilege, justified security settings, positive an
 
 ## Evidence and limitations
 
-PASS applies only to tests actually performed and supported by supplied output. Published console excerpts were transcribed from the owner's session; they are not new automated test runs. Seven Day 01, ten Day 02, seven Day 03 and six Day 04 screenshots are published. Client logon, GPO scope, Finance allow/deny access and drive mapping were tested. The session-lock test is an owner observation. adm.onprem now belongs to GG-Workstation-Admins and passed a workstation administration test. Cloud Sync group membership checks, preservation of old cloud accounts and Anna's cloud login are owner confirmations; exported cloud logs were not supplied.
+PASS applies only to tests actually performed and supported by supplied output. Published console excerpts were transcribed from the owner's session; they are not new automated test runs. Seven Day 01, ten Day 02, seven Day 03, six Day 04 and three Day 05 screenshots are published. Client logon, GPO scope, Finance allow/deny access and drive mapping were tested. The session-lock test is an owner observation. adm.onprem now belongs to GG-Workstation-Admins and passed a workstation administration test. Cloud Sync group membership checks, preservation of old cloud accounts and Anna's cloud login are owner confirmations; Day 04 exported cloud logs were not supplied. Day 05 includes a provisioning-log screenshot and copied export text showing AccountEnabled=False; denied login and session revocation were not tested.
 
 This is a single-DC educational lab, not a production-ready or comprehensively secured environment. Passwords, DSRM credentials, tokens, VM disks, and installation media must not be committed.
