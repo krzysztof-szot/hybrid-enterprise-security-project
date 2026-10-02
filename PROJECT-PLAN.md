@@ -16,7 +16,7 @@ A practical Microsoft hybrid enterprise security portfolio for Baltic Finance. T
 | 06 | Windows 11, Entra Join, Intune enrollment, ownership and primary user | Device identity, join type and enrollment verification | Recorded scope completed on 2026-10-02; see docs/day-06.md and tests/day-06.md |
 | 07 | Justified Intune configuration profiles and security baseline | Policy assignment and endpoint results | Recorded pilot scope completed on 2026-10-02; see docs/day-07.md and tests/day-07.md |
 | 08 | Compliance plus Conditional Access requiring compliant devices | Allowed compliant device; blocked non-compliant device; sign-in logs | Recorded pilot scope completed on 2026-10-02; see docs/day-08.md and tests/day-08.md |
-| 09 | Defender Antivirus, firewall, BitLocker, ASR where available; optional MDE | Endpoint security configuration and tests | Not started |
+| 09 | Defender Antivirus, firewall, BitLocker, ASR; optional MDE, Tamper Protection and key rotation | Selected positive/negative endpoint tests, onboarding and rotation status | Recorded pilot scope completed on 2026-10-02; see docs/day-09.md and tests/day-09.md |
 | 10 | Azure RBAC: Reader, Contributor, Security Reader, Storage Blob Data Reader | Authorized operation vs denied change; distinguish Entra roles and Azure RBAC | Not started |
 | 11 | Key Vault, managed identity and access control | Authorized secret read vs denied identity; no hard-coded credentials | Not started |
 | 12 | VNet, subnets, NSGs; temporary test resource only when needed | Allowed and blocked traffic; resource cleanup | Not started |
@@ -41,9 +41,11 @@ A practical Microsoft hybrid enterprise security portfolio for Baltic Finance. T
 
 - Day 06 uses the existing M365 E5 trial (approximately three weeks remaining, owner-reported on 2026-10-02). Anna's Intune license assignment and membership in BFL-Intune-Pilot-Users were confirmed; automatic MDM scope is Some for that group. Exact trial expiration remains unrecorded. The visible Compliant badge is not a custom-policy test.
 
-- Day 07 targets BFL-Intune-Pilot-Devices with session-lock, Edge SmartScreen and a tailored Windows 25H2 baseline. Five-minute lock and blocked-site behavior passed; baseline report and post-restart checks passed. Incorrect session-lock exclusion was corrected. Baseline exceptions reserve dedicated AV/ASR/firewall/BitLocker work for Day 09; inspect effective settings before that stage. Individual baseline controls and snapshot recovery were not all tested.
+- Day 07 targets BFL-Intune-Pilot-Devices with session-lock, Edge SmartScreen and a tailored Windows 25H2 baseline. Five-minute lock and blocked-site behavior passed; baseline report and post-restart checks passed. Incorrect session-lock exclusion was corrected. Baseline exceptions reserved dedicated AV/ASR/firewall/BitLocker work, now recorded in Day 09. Individual baseline controls and snapshot recovery were not all tested.
 
 - Day 08 adds BFL-WIN-Compliance-Pilot (Firewall, Antivirus and TPM required) and CA-BFL-Pilot-Require-Compliant-Device for Anna / Office 365. Report-only evaluation, enforced allow, controlled OS-version denial and recovery passed for Outlook Web. Final device Compliant and CA On are owner-confirmed. The temporary OS requirement was removed. The tenant no-policy default remains Compliant; emergency-account sign-in was not tested.
+
+- Day 09 deployed dedicated endpoint policies to the BFL-WKS02 pilot. Quick scan, quarantine after the EICAR exercise, firewall block/recovery and ASR audit/block were observed. Only the obfuscated-script rule was promoted to Block; five selected rules remain Audit. The temporary Edge block rule remains Disabled. Existing M365 E5 licensing was used for MDE onboarding; connector Available, device Onboarded/Active and managed Tamper Protection On were verified. Manual BitLocker rotation completed; a new Key Id and C: On are owner-confirmed. No EDR alert/response or boot-recovery test was performed. Final firewall logging values and demonstration-script cleanup remain unconfirmed.
 
 ## Daily completion standard
 
@@ -51,4 +53,4 @@ Document objective, context, configuration, security rationale, troubleshooting,
 
 ## Next action
 
-Begin Day 09 by inspecting effective Defender Antivirus, firewall, BitLocker and ASR settings on BFL-WKS02. Compare existing Intune assignments and Day 07 baseline exceptions before adding dedicated policies. Preserve Day 08 compliance and Conditional Access enforcement. Use the existing trial where suitable; verify licensing and costs before optional MDE integration or other cloud changes. Do not add empty folders for future work.
+Begin Day 10 by inspecting the existing Azure subscription, effective role assignments and scopes, remaining credits and trial expiry. Plan Reader, Contributor, Security Reader and Storage Blob Data Reader comparisons using authorized and denied operations; distinguish management-plane and data-plane access. Preserve the completed endpoint pilot. Confirm the outstanding demonstration-script cleanup and record any later firewall-log validation separately. Avoid unnecessary paid resources and do not add empty folders for future work.

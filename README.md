@@ -4,9 +4,9 @@ A hands-on Microsoft hybrid security lab for the fictional organization **Baltic
 
 ## Current status
 
-**Days 01–08: recorded functional scope completed. Latest lab session: 2026-10-02.**
+**Days 01–09: recorded functional scope completed. Latest lab session: 2026-10-02.**
 
-Implemented: one local Windows Server 2025 domain controller, AD DS, DNS, organizational units, users, security groups, and external time synchronization. Day 02 adds a domain-joined Windows 11 workstation, scoped GPOs, password/lockout policy, session-lock testing, Finance share authorization and mapping, and local administrator group management. Day 03 adds a tested administrative identity, encrypted Windows LAPS, group-change auditing and a working gMSA task. Day 04 connects the existing Entra tenant through a Cloud Sync pilot; Anna's cloud login with her AD password succeeded (owner-confirmed). Day 05 diagnoses a controlled group-scope exclusion, verifies creation after correction and propagates the test account's disabled state to Entra ID. Day 06 adds BFL-WKS02 as a separate Entra-joined, Intune-managed workstation with Corporate ownership and Anna as primary user. Day 07 adds tested five-minute session lock, enforced Edge SmartScreen with a blocked-site test, and a tailored Windows 25H2 security baseline on BFL-WKS02. Day 08 adds pilot compliance and Conditional Access, with Outlook access allowed, blocked after controlled OS-version noncompliance, and restored while the policy remains On. No new Azure workload, Defender cloud integration or Sentinel deployment was performed in this project.
+Implemented: one local Windows Server 2025 domain controller, AD DS, DNS, organizational units, users, security groups, and external time synchronization. Day 02 adds a domain-joined Windows 11 workstation, scoped GPOs, password/lockout policy, session-lock testing, Finance share authorization and mapping, and local administrator group management. Day 03 adds a tested administrative identity, encrypted Windows LAPS, group-change auditing and a working gMSA task. Day 04 connects the existing Entra tenant through a Cloud Sync pilot; Anna's cloud login with her AD password succeeded (owner-confirmed). Day 05 diagnoses a controlled group-scope exclusion, verifies creation after correction and propagates the test account's disabled state to Entra ID. Day 06 adds BFL-WKS02 as a separate Entra-joined, Intune-managed workstation with Corporate ownership and Anna as primary user. Day 07 adds tested five-minute session lock, enforced Edge SmartScreen with a blocked-site test, and a tailored Windows 25H2 security baseline on BFL-WKS02. Day 08 adds pilot compliance and Conditional Access, with Outlook access allowed, blocked after controlled OS-version noncompliance, and restored while the policy remains On. Day 09 adds dedicated antivirus, firewall, BitLocker and ASR policies with selected functional tests, plus MDE onboarding, managed Tamper Protection and manual BitLocker key rotation. No Azure workload, Defender for Cloud or Sentinel deployment was performed in these recorded stages.
 
 - [Day 01 implementation and troubleshooting](docs/day-01.md)
 - [Day 01 test record](tests/day-01.md)
@@ -22,6 +22,7 @@ Implemented: one local Windows Server 2025 domain controller, AD DS, DNS, organi
 - [Day 06 Entra join and Intune enrollment](docs/day-06.md) · [Tests](tests/day-06.md) · [Evidence](evidence/day-06/README.md)
 - [Day 07 configuration and baseline](docs/day-07.md) · [Tests](tests/day-07.md) · [Evidence](evidence/day-07/README.md)
 - [Day 08 compliance and Conditional Access](docs/day-08.md) · [Tests](tests/day-08.md) · [Evidence](evidence/day-08/README.md)
+- [Day 09 endpoint security and MDE](docs/day-09.md) · [Tests](tests/day-09.md) · [Evidence](evidence/day-09/README.md)
 - [Project roadmap](PROJECT-PLAN.md)
 
 ## Implemented architecture
@@ -34,7 +35,9 @@ flowchart LR
     NAT --> WKS2["BFL-WKS02: Windows 11\nMicrosoft Entra joined"]
     WKS2 -->|"Device identity"| Entra
     WKS2 -->|"MDM enrollment / Corporate / Anna primary user"| Intune["Microsoft Intune"]
-    Intune -->|"Session lock / Edge SmartScreen / baseline / compliance"| WKS2
+    Intune -->|"Configuration / baseline / compliance / endpoint security"| WKS2
+    Intune <-->|"Enabled connector"| MDE["Microsoft Defender for Endpoint"]
+    WKS2 -->|"Onboarded / Active"| MDE
     Entra --> CA["Conditional Access: require compliant device\nAnna / Office 365 pilot"]
     WKS2 -->|"Outlook sign-in: allow / deny / restore tested"| CA
     WKS -->|"AD logon / GPO / Finance SMB share"| DC
@@ -50,18 +53,20 @@ The DC's IPv4 DNS client uses 127.0.0.1. NAT provides outbound connectivity; it 
 
 ## Remaining target architecture
 
-The AD-to-Entra pilot and enrollment of BFL-WKS02 into Intune are implemented. Pilot configuration profiles and a tailored Windows baseline are deployed. Pilot compliance and Conditional Access are validated for Anna's Outlook sign-ins. Remaining stages: Endpoint Security → Azure Security → Defender → Log Analytics → Microsoft Sentinel → Detection / Investigation / Response. BFL-WKS01 remains AD joined; BFL-WKS02 is Entra joined and is not hybrid joined.
+The AD-to-Entra pilot and enrollment of BFL-WKS02 into Intune are implemented. Pilot configuration profiles and a tailored Windows baseline are deployed. Pilot compliance and Conditional Access are validated for Anna's Outlook sign-ins. Dedicated endpoint policies and MDE onboarding are implemented for BFL-WKS02. Remaining stages: Azure Security → Defender for Cloud → Log Analytics → Microsoft Sentinel → Detection / Investigation / Response. BFL-WKS01 remains AD joined; BFL-WKS02 is Entra joined and is not hybrid joined.
 
 The project emphasizes least privilege, justified security settings, positive and negative tests, log verification, troubleshooting, and cost control.
 
 ## Evidence and limitations
 
-PASS applies only to tests actually performed and supported by supplied output. Published console excerpts were transcribed from the owner's session; they are not new automated test runs. Seven Day 01, ten Day 02, seven Day 03, six Day 04, three Day 05, three Day 06, five Day 07 and eight Day 08 screenshots are published. Client logon, GPO scope, Finance allow/deny access and drive mapping were tested. The session-lock test is an owner observation. adm.onprem now belongs to GG-Workstation-Admins and passed a workstation administration test. Cloud Sync group membership checks, preservation of old cloud accounts and Anna's cloud login are owner confirmations; Day 04 exported cloud logs were not supplied. Day 05 includes a provisioning-log screenshot and copied export text showing AccountEnabled=False; denied login and session revocation were not tested.
+PASS applies only to tests actually performed and supported by supplied output. Published console excerpts were transcribed from the owner's session; they are not new automated test runs. Seven Day 01, ten Day 02, seven Day 03, six Day 04, three Day 05, three Day 06, five Day 07, eight Day 08 and sixteen Day 09 screenshots are published. Client logon, GPO scope, Finance allow/deny access and drive mapping were tested. The session-lock test is an owner observation. adm.onprem now belongs to GG-Workstation-Admins and passed a workstation administration test. Cloud Sync group membership checks, preservation of old cloud accounts and Anna's cloud login are owner confirmations; Day 04 exported cloud logs were not supplied. Day 05 includes a provisioning-log screenshot and copied export text showing AccountEnabled=False; denied login and session revocation were not tested.
 
 Day 06 screenshots confirm join status, Intune management, Corporate ownership and primary user. Scope saving and license assignment are owner-confirmed. The displayed Compliant badge does not establish custom compliance-policy enforcement. An existing M365 E5 trial was used; the owner reported approximately three weeks remaining on 2026-10-02.
 
-Day 07 combines Intune reports, effective Edge policies, a blocked demonstration page and owner-observed lock/regression tests. Baseline Success does not prove every control; final full configuration export and snapshot recovery were not verified. Dedicated antivirus, firewall, ASR and BitLocker configuration/testing remains Day 09.
+Day 07 combines Intune reports, effective Edge policies, a blocked demonstration page and owner-observed lock/regression tests. Baseline Success does not prove every control; final full configuration export and snapshot recovery were not verified. Dedicated antivirus, firewall, ASR and BitLocker configuration and selected tests are recorded in Day 09.
 
 Day 08 includes report-only evaluation, enforced success, deliberate OS-version noncompliance, denied access and recovery. Final device Compliant status, Outlook access and CA On are owner-confirmed. The tenant setting for devices without compliance policies remains Compliant; testing covers only the pilot. Emergency-account login and existing-session revocation were not tested.
+
+Day 09 includes a quick scan, quarantine after the EICAR exercise, Edge outbound block/recovery, ASR events 1122/1121, MDE Onboarded/Active, managed Tamper Protection On and completed manual BitLocker key rotation. The obfuscated-script ASR rule remains Block; five other selected rules remain Audit. The temporary Edge block rule is Disabled. Expanded EICAR details, final firewall logging configuration, other ASR behaviors, EDR alert/response, boot recovery and automatic key rotation were not verified. Test-script cleanup was requested but not confirmed.
 
 This is a single-DC educational lab, not a production-ready or comprehensively secured environment. Passwords, DSRM credentials, tokens, VM disks, and installation media must not be committed.
