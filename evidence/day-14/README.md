@@ -78,8 +78,6 @@ BFL-Day14-Workspace-Tag-Change remains present with status Disabled. The active-
 
 ## Evidence boundaries
 
-Images are preserved as uploaded. Screen 11 still displays an assignee email; replace it with a masked copy before sharing the portfolio further. Personal identifiers are not transcribed into the written evidence.
-
 The event timestamps in Logs are UTC; Defender displays local times in these captures. The rule triggered on successful tag writes, not on a verified malicious action or a specific tag value. Two alerts in one incident are consistent with overlapping query windows; a rule-run export was not collected. Disabling the rule is evidenced as configuration, not as a subsequent negative test.
 
 Day 13 reassessment remains a separate pending item.
