@@ -18,7 +18,7 @@ A practical Microsoft hybrid enterprise security portfolio for Baltic Finance. T
 | 08 | Compliance plus Conditional Access requiring compliant devices | Allowed compliant device; blocked non-compliant device; sign-in logs | Recorded pilot scope completed on 2026-10-02; see docs/day-08.md and tests/day-08.md |
 | 09 | Defender Antivirus, firewall, BitLocker, ASR; optional MDE, Tamper Protection and key rotation | Selected positive/negative endpoint tests, onboarding and rotation status | Recorded pilot scope completed on 2026-10-02; see docs/day-09.md and tests/day-09.md |
 | 10 | Azure RBAC: Reader, Contributor, Security Reader, Storage Blob Data Reader | Authorized operation vs denied change; distinguish Entra roles and Azure RBAC | Recorded scope and cleanup completed on 2026-10-02; see docs/day-10.md and tests/day-10.md |
-| 11 | Key Vault, managed identity and access control | Authorized secret read vs denied identity; no hard-coded credentials | Not started |
+| 11 | Key Vault, managed identity and access control | Authorized secret read vs denied identity; no hard-coded credentials | Recorded read, write-denial and revocation tests completed; see docs/day-11.md and tests/day-11.md |
 | 12 | VNet, subnets, NSGs; temporary test resource only when needed | Allowed and blocked traffic; resource cleanup | Not started |
 | 13 | Defender for Cloud recommendations and posture | Finding → Risk → Recommendation → Remediation → Verification | Not started |
 | 14 | Log Analytics, Sentinel and useful KQL for selected telemetry | Data ingestion and detection queries with real results | Not started |
@@ -49,10 +49,12 @@ A practical Microsoft hybrid enterprise security portfolio for Baltic Finance. T
 
 - Day 10 tested Reader and Contributor at rg-bfl-rbac-lab scope, Security Reader at subscription scope, and Storage Blob Data Reader at container scope. Tag read/write outcomes, disabled Contributor role-assignment UI, security-view access, Blob read/write denial and post-revocation denial were recorded. The temporary group/account were cleaned up; subscription Security Reader removal is owner-confirmed. Final Storage settings export and actual costs were not collected.
 
+- Day 11 used only new resources: rg-bfl-keyvault-lab, kv-bfl-day11-01 and aa-bfl-day11. System-assigned identity On and vault-scoped Key Vault Secrets User were observed. Initial read denial, authorized read, denied secret creation and read denial after removing the role passed. The runbooks used managed-identity authentication and did not print the secret value. Seven screenshots support the record; exact test timestamps, final settings/runtime exports and actual costs were not collected.
+
 ## Daily completion standard
 
 Document objective, context, configuration, security rationale, troubleshooting, result and lessons learned. Record test preconditions, procedure, expected/actual result, status and evidence. Never mark an unperformed test PASS.
 
 ## Next action
 
-Begin Day 11 by inspecting existing suitable Azure resources, their current configuration and costs before selecting a Key Vault and managed-identity test path. Plan an authorized secret read and a denied identity using a non-sensitive test secret, with no hard-coded credentials. Recheck credit and the 2026-10-13 expiry before provisioning. Day 10 resources were cleaned up; do not assume its Storage account still exists. Preserve earlier completed lab stages and do not add empty future folders.
+Begin Day 12: VNet, subnets and NSGs. Agree a new, isolated test scope and review current credit, subscription availability and expected costs before provisioning. The last owner-reported credit was EUR 159.53 with expiry 2026-10-13; recheck rather than assume it is current. Plan allowed and blocked traffic with explicit sources, destinations, ports and evidence. Preserve earlier resources and do not assume Day 11 resources are available for reuse.
