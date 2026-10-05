@@ -8,9 +8,9 @@
 - Do not spawn agents unless explicitly requested.
 - Investigate symptoms, configuration, and logs before proposing the smallest fix. Never rebuild by default.
 - Never invent screenshots, logs, results, or PASS statuses. Separate owner-confirmed actions from supplied command output and from unperformed tests.
-- Day 01–13 screenshots are published. Day 13 functional Storage tests are complete, but Defender reassessment and any Secure Score improvement remain unverified. Add future evidence links only after the actual files exist and have been reviewed. Request only key screenshots and give their filenames in advance.
+- Day 01–14 screenshots are published. Day 14's incident and both alerts are resolved, and its demonstration rule is Disabled. Day 13 functional Storage tests are complete, but Defender reassessment and any Secure Score improvement remain unverified. Add future evidence links only after the actual files exist and have been reviewed. Request only key screenshots and give their filenames in advance.
 - Keep credentials and personal information out of commits. Mask unnecessary identifiers before publication.
 - Prefer local resources. Explain cloud costs before provisioning, delay trials until needed, and plan cleanup.
 - Preserve Baltic Finance / BFL naming and existing objects. Create folders only when needed.
-- Maintain daily implementation, tests, evidence inventory, troubleshooting, limitations, and next-step notes.
+- Maintain daily implementation, tests, evidence inventory, troubleshooting, limitations, and next-step notes. Evidence README files use one section per screenshot with a description and embedded image, following the owner's requested format.
 - Do not treat an administrative account name or OU placement as proof of privileges.
