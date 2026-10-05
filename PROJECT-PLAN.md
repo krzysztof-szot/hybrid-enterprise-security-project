@@ -20,7 +20,7 @@ A practical Microsoft hybrid enterprise security portfolio for Baltic Finance. T
 | 10 | Azure RBAC: Reader, Contributor, Security Reader, Storage Blob Data Reader | Authorized operation vs denied change; distinguish Entra roles and Azure RBAC | Recorded scope and cleanup completed on 2026-10-02; see docs/day-10.md and tests/day-10.md |
 | 11 | Key Vault, managed identity and access control | Authorized secret read vs denied identity; no hard-coded credentials | Recorded read, write-denial and revocation tests completed; see docs/day-11.md and tests/day-11.md |
 | 12 | VNet, subnets, NSGs; temporary test resource only when needed | Allowed and blocked traffic; resource cleanup | Functional tests completed on 2026-10-05; both VMs deallocated, deletion not claimed; see docs/day-12.md and tests/day-12.md |
-| 13 | Defender for Cloud recommendations and posture | Finding → Risk → Recommendation → Remediation → Verification | Not started |
+| 13 | Defender for Cloud recommendations and posture | Finding → Risk → Recommendation → Remediation → Verification | Storage remediation and functional tests completed on 2026-10-05; Defender reassessment pending; see docs/day-13.md and tests/day-13.md |
 | 14 | Log Analytics, Sentinel and useful KQL for selected telemetry | Data ingestion and detection queries with real results | Not started |
 | 15 | Capstone using existing services | Identity/Azure and endpoint/Zero Trust scenarios: Prevent → Detect → Investigate → Respond → Verify | Not started |
 | Final | Security assessment | Strengths, residual risks, lab limitations and production improvements | Not started |
@@ -53,10 +53,14 @@ A practical Microsoft hybrid enterprise security portfolio for Baltic Finance. T
 
 - Day 12 created rg-bfl-network-lab, vnet-bfl-day12 and two Ubuntu 24.04 Standard B2als_v2 test VMs. The server subnet NSG denied TCP 8080 from 10.120.1.4 to 10.120.2.4; real HTTP and Network Watcher results verified allow, deny and restoration after rule removal. Both VMs are Stopped (deallocated), owner-confirmed. Retained disks/public IPs may still incur charges; deletion and zero ongoing cost are not claimed. Eight screenshots are published. Final client NIC NSG corrections were instructed but not independently verified. The owner reported more than EUR 156 credit on 2026-10-05, expiring 2026-10-13.
 
+- Day 13 reused bflmi13a7k29 with explicit owner authorization. Defender CSPM is On (Partial coverage), with paid use accepted. The saved Secure Score baseline is 34%; no post-remediation increase is claimed. Storage now allows selected networks through vnet-bfl-day12 / snet-client and its Microsoft.Storage service endpoint, with no public IPv4 allow rules and one retained trusted-services exception. The client VM's system-assigned identity has container-scoped Storage Blob Data Reader. Blob GET returned HTTP 200 / 205 bytes before and after removing the workstation IP rule; the workstation then received 403. Client Stopped (deallocated) is owner-confirmed. Fourteen screenshots are published. The selected recommendation still lists the account; reassessment and post-change score are outstanding. Old BFL-CON01/BFL-EJ01 findings concern VMs the owner reported deleting for licensing reasons and are not recorded as network remediations.
+
 ## Daily completion standard
 
 Document objective, context, configuration, security rationale, troubleshooting, result and lessons learned. Record test preconditions, procedure, expected/actual result, status and evidence. Never mark an unperformed test PASS.
 
 ## Next action
 
-Begin Day 13: inspect Defender for Cloud recommendations and current plan status, then choose a scoped Finding → Risk → Recommendation → Remediation → Verification exercise. Recheck current credit and the 2026-10-13 expiry before any billable change; do not enable paid plans merely to populate findings. Day 12 VMs are deallocated, so inspect freshness and suitability before relying on their assessments or starting them. Earlier Day 10 recommendation views contained Not evaluated rows and do not establish current posture or remediation. Preserve existing resources and select changes only within the owner's authorized scope.
+Check the Day 13 Storage VNet-rules recommendation after reassessment and capture its actual health/compliance result plus a fresh Secure Score view. Preserve PENDING until evidence supports a change; do not interpret governance status Unassigned or risk Not evaluated as compliance. The client VM can remain deallocated for this portal review. If the finding persists, inspect the assessment/policy details before making further changes.
+
+Day 14 (Log Analytics / Sentinel) is not started. Before provisioning its resources, review current resource availability, licensing, costs and the owner-reported Azure credit expiry of 2026-10-13. Do not assume deleted older VMs remain available as telemetry sources.
