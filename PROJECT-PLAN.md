@@ -19,7 +19,7 @@ A practical Microsoft hybrid enterprise security portfolio for Baltic Finance. T
 | 09 | Defender Antivirus, firewall, BitLocker, ASR; optional MDE, Tamper Protection and key rotation | Selected positive/negative endpoint tests, onboarding and rotation status | Recorded pilot scope completed on 2026-10-02; see docs/day-09.md and tests/day-09.md |
 | 10 | Azure RBAC: Reader, Contributor, Security Reader, Storage Blob Data Reader | Authorized operation vs denied change; distinguish Entra roles and Azure RBAC | Recorded scope and cleanup completed on 2026-10-02; see docs/day-10.md and tests/day-10.md |
 | 11 | Key Vault, managed identity and access control | Authorized secret read vs denied identity; no hard-coded credentials | Recorded read, write-denial and revocation tests completed; see docs/day-11.md and tests/day-11.md |
-| 12 | VNet, subnets, NSGs; temporary test resource only when needed | Allowed and blocked traffic; resource cleanup | Not started |
+| 12 | VNet, subnets, NSGs; temporary test resource only when needed | Allowed and blocked traffic; resource cleanup | Functional tests completed on 2026-10-05; both VMs deallocated, deletion not claimed; see docs/day-12.md and tests/day-12.md |
 | 13 | Defender for Cloud recommendations and posture | Finding → Risk → Recommendation → Remediation → Verification | Not started |
 | 14 | Log Analytics, Sentinel and useful KQL for selected telemetry | Data ingestion and detection queries with real results | Not started |
 | 15 | Capstone using existing services | Identity/Azure and endpoint/Zero Trust scenarios: Prevent → Detect → Investigate → Respond → Verify | Not started |
@@ -51,10 +51,12 @@ A practical Microsoft hybrid enterprise security portfolio for Baltic Finance. T
 
 - Day 11 used only new resources: rg-bfl-keyvault-lab, kv-bfl-day11-01 and aa-bfl-day11. System-assigned identity On and vault-scoped Key Vault Secrets User were observed. Initial read denial, authorized read, denied secret creation and read denial after removing the role passed. The runbooks used managed-identity authentication and did not print the secret value. Seven screenshots support the record; exact test timestamps, final settings/runtime exports and actual costs were not collected.
 
+- Day 12 created rg-bfl-network-lab, vnet-bfl-day12 and two Ubuntu 24.04 Standard B2als_v2 test VMs. The server subnet NSG denied TCP 8080 from 10.120.1.4 to 10.120.2.4; real HTTP and Network Watcher results verified allow, deny and restoration after rule removal. Both VMs are Stopped (deallocated), owner-confirmed. Retained disks/public IPs may still incur charges; deletion and zero ongoing cost are not claimed. Eight screenshots are published. Final client NIC NSG corrections were instructed but not independently verified. The owner reported more than EUR 156 credit on 2026-10-05, expiring 2026-10-13.
+
 ## Daily completion standard
 
 Document objective, context, configuration, security rationale, troubleshooting, result and lessons learned. Record test preconditions, procedure, expected/actual result, status and evidence. Never mark an unperformed test PASS.
 
 ## Next action
 
-Begin Day 12: VNet, subnets and NSGs. Agree a new, isolated test scope and review current credit, subscription availability and expected costs before provisioning. The last owner-reported credit was EUR 159.53 with expiry 2026-10-13; recheck rather than assume it is current. Plan allowed and blocked traffic with explicit sources, destinations, ports and evidence. Preserve earlier resources and do not assume Day 11 resources are available for reuse.
+Begin Day 13: inspect Defender for Cloud recommendations and current plan status, then choose a scoped Finding → Risk → Recommendation → Remediation → Verification exercise. Recheck current credit and the 2026-10-13 expiry before any billable change; do not enable paid plans merely to populate findings. Day 12 VMs are deallocated, so inspect freshness and suitability before relying on their assessments or starting them. Earlier Day 10 recommendation views contained Not evaluated rows and do not establish current posture or remediation. Preserve existing resources and select changes only within the owner's authorized scope.
