@@ -8,7 +8,7 @@
 - Do not spawn agents unless explicitly requested.
 - Investigate symptoms, configuration, and logs before proposing the smallest fix. Never rebuild by default.
 - Never invent screenshots, logs, results, or PASS statuses. Separate owner-confirmed actions from supplied command output and from unperformed tests.
-- Day 01–14 screenshots are published. Day 14's incident and both alerts are resolved, and its demonstration rule is Disabled. Day 13 functional Storage tests are complete, but Defender reassessment and any Secure Score improvement remain unverified. Add future evidence links only after the actual files exist and have been reviewed. Request only key screenshots and give their filenames in advance.
+- Day 01–15 screenshots are published. Day 15's two capstone scenarios are complete: Sara's Reader grant was detected, investigated and removed; incident ID 5 and both alerts are Resolved / Benign Positive; BFL-WKS02 compliance and Outlook/CA Success were restored. Day 14 and Day 15 demonstration rules are Disabled. Final security assessment remains outstanding. Day 13 functional Storage tests are complete, but Defender reassessment and any Secure Score improvement remain unverified. Add future evidence links only after the actual files exist and have been reviewed. Request only key screenshots and give their filenames in advance.
 - Keep credentials and personal information out of commits. Mask unnecessary identifiers before publication.
 - Prefer local resources. Explain cloud costs before provisioning, delay trials until needed, and plan cleanup.
 - Preserve Baltic Finance / BFL naming and existing objects. Create folders only when needed.
