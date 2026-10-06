@@ -1,3 +1,5 @@
+# WORK IN PROGRESS
+
 # hybrid-enterprise-security-project
 
 A hands-on Microsoft hybrid security lab for the fictional organization **Baltic Finance**. The lab is built and operated manually by the project owner, with guided review and troubleshooting.
