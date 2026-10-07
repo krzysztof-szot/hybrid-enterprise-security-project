@@ -37,15 +37,3 @@ Sentinel costs depend on the applicable ingestion, analysis, retention and relat
 6. Recheck the resource inventory and billing after usage data updates. Record actual results and the chosen retained scope.
 
 None of these closure checks is marked completed without fresh owner evidence. No automatic deletion schedule, subscription cancellation or blanket resource-group deletion is authorized by this document.
-
-## Completion record to fill after execution
-
-| Item | Current status |
-|---|---|
-| Current Azure billing/credit verification | Pending owner check |
-| Exact Microsoft 365 license/trial expiry | Pending owner check |
-| Retention deadline and budget | Pending owner decision |
-| Approved resource changes | Not executed |
-| Post-change inventory and cost verification | Not performed |
-
-The portfolio is complete even if the owner elects to keep a budgeted lab. Operational retention and its costs must remain explicit.
