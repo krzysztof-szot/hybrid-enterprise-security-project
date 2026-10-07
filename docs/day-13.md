@@ -1,7 +1,8 @@
 # Day 13 — Defender for Cloud and Storage network access
 
 Date: 2026-10-05  
-Status: remediation implemented and functional tests completed; Defender reassessment pending.
+Follow-up recorded: 2026-10-07  
+Status: functional tests completed; selected recommendation recorded as Completed; post-reassessment Secure Score captured.
 
 ## Objective and scope
 
@@ -29,7 +30,7 @@ The owner explicitly authorized changing the existing `bflmi13a7k29` account. Th
 | Risk | Broad network reachability leaves data access dependent on authorization without a narrow network boundary. This does not mean the blobs were anonymous or publicly readable. |
 | Recommendation | Use selected networks, add an approved virtual network/subnet and remove public IP allow rules, as described in the recommendation details. |
 | Remediation | Allow snet-client through a Storage service endpoint, remove the temporary workstation IP rule, and grant the client VM's managed identity container-scoped Blob read access. |
-| Verification | Managed-identity Blob GET returned HTTP 200 before and after IP-rule removal. The workstation subsequently received HTTP 403. Final networking shows one VNet and no IPv4 allow rules. Defender confirmation remains pending. |
+| Verification | Managed-identity Blob GET returned HTTP 200 before and after IP-rule removal. The workstation subsequently received HTTP 403. Final networking shows one VNet and no IPv4 allow rules. The later Defender view shows this account with status Completed (screenshot 15). |
 
 ## Resources and final recorded configuration
 
@@ -144,11 +145,27 @@ Both supplied VM results show `HTTP status: 200`, `Bytes read: 205` and the expl
 | Selected networks with a workstation IP rule still left the recommendation relevant | Read the recommendation's exact remediation; added the subnet/service endpoint and removed the IP rule. The intermediate state in screenshot 05 is not the final configuration. |
 | Successful portal listing used Access key | Recorded it as a workstation access baseline, not an Entra RBAC test. VM reads separately verified managed-identity authentication. |
 | Portal returned 403 after IP removal | Consistent with the intended network restriction when combined with the final settings and successful VM read. The error alone does not uniquely diagnose every possible authorization failure. |
-| Defender still listed the account after tests | Preserved the pending result. The displayed freshness interval is 30 minutes, not proof that reassessment completed. Refreshing the view does not establish a new assessment. |
+| Defender still listed the account after tests | Preserved the initial pending result in screenshot 14. The later screenshot 15 shows the account with status Completed. Elapsed time or a refresh alone was not treated as proof. |
 
 ## Results and limitations
 
-Functional verification is complete for the recorded read path and workstation denial. Defender recommendation clearance and a post-remediation Secure Score change are **not verified**. No increase in score is claimed.
+Functional verification is complete for the recorded read path and workstation denial. The selected Storage recommendation now displays Completed for bflmi13a7k29. The score captured on 2026-10-07 is 77%, up from the saved 34% baseline (+43 percentage points). The owner attributes the increase mainly to removal of two older, no-longer-needed VMs for licensing reasons. The screenshots establish the score change, not the numerical contribution of each change; the increase is not attributed solely to Storage hardening.
+
+## Reassessment follow-up
+
+[15 — Completed recommendation](../evidence/day-13/15-storage-recommendation-completed.png) shows the exact account with Status **Completed** and the top affected-resource counter at **0**. The filtered table includes one completed resource. Risk level remains **Not evaluated**, which is a risk-prioritization field. This records the Defender recommendation status; no separate Azure Policy Compliant result or raw Healthy assessment export was collected.
+
+[16 — Secure Score after reassessment](../evidence/day-13/16-secure-score-after-reassessment.png), supplied on 2026-10-07, shows:
+
+| Observation | Saved baseline (03) | Follow-up (16) |
+|---|---|---|
+| Secure Score | 34% | 77% |
+| Active secure score recommendations | 14/32 | 9/32 |
+| Displayed attack paths | 0 | 0 |
+
+An intermediate session view showed 34% and 12/32; it was not uploaded as a separate numbered evidence file. The final view also shows resource health: Unhealthy 4, Healthy 2, Not applicable 5. Zero displayed attack paths does not establish an absence of all risk.
+
+The owner confirmed that two older VMs had been deleted because they were no longer needed for licensing reasons. Their management-port findings remained visible before reassessment. Removing resources changes the assessed population; it is not evidence that their ports were secured or their operating systems patched. These deleted machines are separate from the Day 12 client/server VMs recorded as deallocated. No per-resource score export or fresh deletion-log audit was collected.
 
 The portal denial screenshot does not show its authentication selector; Access key was used for the earlier baseline and retaining that method was instructed. No separate browser network trace was captured. The VM test proves a Blob GET succeeded; it does not prove write denial or absence of other inherited role assignments. No packet capture, Private Endpoint deployment, broad all-network negative test or full Azure configuration export was performed.
 
@@ -156,9 +173,7 @@ The client role assignment and network changes remain in place. Client deallocat
 
 ## Follow-up
 
-Revisit the selected recommendation after reassessment. Record the resulting resource health/compliance state and a fresh Secure Score screenshot with its capture context. If the finding remains, inspect its assessment and policy details before changing more settings. Do not mark it resolved based only on the functional tests, or attribute a subscription-wide score change solely to this Storage change.
-
-Day 14 remains a separate, not-yet-started Log Analytics / Sentinel milestone.
+The Day 13 recommendation-status and score follow-up is now documented. Retain screenshots 03 and 14 as historical baseline/pending evidence alongside 15 and 16. Proceed to the final security assessment using the remaining findings and recorded limitations; Days 14 and 15 are documented separately as completed exercises. No further Azure changes were performed as part of this documentation update.
 
 ## References
 

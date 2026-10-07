@@ -2,7 +2,8 @@
 
 Date: 2026-10-05  
 Scope: `bflmi13a7k29 / identity-lab`, the Day 12 client subnet and VM.  
-Status: recorded functional checks PASS; Defender reassessment PENDING.
+Follow-up recorded: 2026-10-07.  
+Status: functional checks PASS; selected Defender recommendation Completed and post-reassessment score recorded.
 
 [Implementation and test script](../docs/day-13.md) · [Evidence](../evidence/day-13/README.md) · [Output excerpts](../evidence/day-13/console-excerpts.md)
 
@@ -16,8 +17,8 @@ Status: recorded functional checks PASS; Defender reassessment PENDING.
 | STOR-03 | Remove workstation IP allow rule and save; repeat the same VM script | VM read remains allowed | Token acquired, HTTP 200, 205 bytes, explicit PASS | PASS | [11](../evidence/day-13/11-storage-vm-access-after-ip-removal.png), [13](../evidence/day-13/13-storage-network-final.png) |
 | STOR-04 | After IP removal, retest the container view from the workstation | Workstation data access is denied | HTTP 403; portal message identifies Storage networking as a possible blocker | PASS — observed workstation denial | [12](../evidence/day-13/12-storage-public-access-blocked.png) |
 | STOR-05 | Inspect final Storage Networking summary | Selected networks, approved VNet, no public IPv4 allow rule | Selected networks; Virtual networks 1; IPv4 addresses None; Exceptions 1 | PASS — configuration check | [13](../evidence/day-13/13-storage-network-final.png) |
-| CSPM-02 | Revisit the recommendation after remediation | A later assessment confirms the resource no longer violates the selected recommendation | Resource still listed; risk Not evaluated, governance status Unassigned; freshness interval 30 Min | PENDING | [14](../evidence/day-13/14-storage-recommendation-pending.png) |
-| CSPM-03 | Compare an assessed post-change Secure Score against the saved baseline | Document an actual post-change score without unsupported attribution | No post-remediation score supplied | NOT VERIFIED | Baseline only: [03](../evidence/day-13/03-secure-score-before.png) |
+| CSPM-02 | Revisit the selected recommendation after remediation | Record the account's later recommendation status | Initially pending in 14; later bflmi13a7k29 shows Completed, top affected-resource counter 0 | PASS — displayed recommendation status | [14](../evidence/day-13/14-storage-recommendation-pending.png), [15](../evidence/day-13/15-storage-recommendation-completed.png) |
+| CSPM-03 | Compare follow-up Secure Score with saved baseline | Record actual values without unsupported attribution | 34% to 77% (+43 percentage points); active recommendations 14/32 to 9/32; owner attributes increase mainly to removal of two old VMs | PASS — observation recorded | [03](../evidence/day-13/03-secure-score-before.png), [16](../evidence/day-13/16-secure-score-after-reassessment.png) |
 
 ## Evidence boundaries
 
@@ -30,6 +31,6 @@ Status: recorded functional checks PASS; Defender reassessment PENDING.
 - The 34% baseline is not an after-remediation result. An earlier 32% observation is not a demonstrated improvement caused by this exercise.
 - After testing, the owner confirmed client Stopped (deallocated). No power-state screenshot or resource deletion is claimed.
 
-## Outstanding verification
+## Follow-up evidence and limits
 
-Capture the selected recommendation's post-reassessment health/compliance result and a fresh Secure Score view. If the finding remains, investigate the assessment rather than converting PENDING to PASS from elapsed time alone.
+Screenshots 15 and 16 close the previously pending recommendation-status and score observations. Completed is the displayed Defender status; no separate Azure Policy Compliant or raw Healthy assessment export was supplied. The score rose by 43 percentage points, but the assessed resource population changed after owner-reported VM deletion. No test establishes how many points came from Storage hardening versus resource removal or other changes. Zero displayed attack paths is not a comprehensive security guarantee. The final project security assessment remains outstanding.

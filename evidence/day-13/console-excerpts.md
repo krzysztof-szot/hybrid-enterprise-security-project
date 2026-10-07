@@ -36,7 +36,7 @@ Error code
 
 The portal additionally identifies Storage networking as a possible blocker. Public IP, subscription/resource identifiers and diagnostic identifiers are not transcribed here. The screenshot does not display the authentication selector.
 
-## Final configuration and pending assessment
+## Final configuration and initial pending assessment
 
 [13-storage-network-final.png](13-storage-network-final.png) shows:
 
@@ -54,3 +54,22 @@ Exceptions: 1
 After the tests, the owner reported that vm-bfl-day12-client was Stopped (deallocated). This statement is not a captured Azure CLI or portal output.
 
 No token, Storage key, SAS or blob contents are included.
+
+## Reassessment follow-up
+
+Sources: [15](15-storage-recommendation-completed.png), [16](16-secure-score-after-reassessment.png). Score follow-up supplied on 2026-10-07.
+
+```text
+Storage account: bflmi13a7k29
+Recommendation: Storage accounts should restrict network access using virtual network rules
+Displayed status: Completed
+Top affected-resource counter: 0
+Risk level: Not evaluated
+
+Secure Score: 77%
+Active secure score recommendations: 9/32
+Displayed attack paths: 0
+Resource health: Unhealthy 4 / Healthy 2 / Not applicable 5
+```
+
+The saved baseline was 34% and 14/32 active recommendations; the score difference is +43 percentage points. The owner attributes the increase mainly to deletion of two older VMs no longer needed for licensing reasons. No exact score attribution, separate Azure Policy Compliant result or VM deletion-log export was supplied. Screenshot 14 remains a historical pending result, superseded by 15 for the displayed recommendation status.

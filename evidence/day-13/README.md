@@ -1,6 +1,6 @@
 # Day 13 — Evidence inventory
 
-Fourteen owner-supplied screenshots are published. They document a Storage network remediation, successful managed-identity reads and a workstation denial. Defender reassessment remains pending.
+Sixteen owner-supplied screenshots are published. They document Storage network remediation, successful managed-identity reads, a workstation denial, the later Completed recommendation and a Secure Score follow-up supplied on 2026-10-07.
 
 [Implementation](../../docs/day-13.md) · [Tests](../../tests/day-13.md) · [Actual output excerpts](console-excerpts.md)
 
@@ -84,15 +84,27 @@ Final summary: selected networks, one VNet, no IPv4 allow rules and one retained
 
 ## 14 — 14-storage-recommendation-pending.png
 
-Account still listed after functional tests; no successful Defender reassessment is claimed.
+Historical state immediately after functional tests: the account is still listed and reassessment is pending at that point. The later result is recorded in screenshot 15.
 
 ![14-storage-recommendation-pending](14-storage-recommendation-pending.png)
 
+## 15 — 15-storage-recommendation-completed.png
+
+The selected recommendation shows bflmi13a7k29 with Status Completed. The top affected-resource counter is 0; the filtered table includes the completed account. Risk level Not evaluated is a separate field. This verifies the displayed Defender status, not a separate Azure Policy Compliant assessment.
+
+![15-storage-recommendation-completed](15-storage-recommendation-completed.png)
+
+## 16 — 16-secure-score-after-reassessment.png
+
+Follow-up supplied on 2026-10-07: Secure Score 77%, 9/32 active recommendations and 0 displayed attack paths. Resource health shows Unhealthy 4, Healthy 2 and Not applicable 5. Compared with screenshot 03, the score is up 43 percentage points and active recommendations are down from 14/32 to 9/32. The owner attributes the increase mainly to deleting two older VMs for licensing reasons. No exact contribution from individual changes was measured.
+
+![16-secure-score-after-reassessment](16-secure-score-after-reassessment.png)
+
 ## Reading the sequence
 
-Screenshots 05–06 capture an intermediate IP-allowlisted state. Screenshot 08 adds the subnet rule, 09 establishes the container role assignment, 10–11 show actual VM reads, and 12–13 show the workstation denial and final network configuration. Screenshot 14 preserves the outstanding assessment rather than claiming that the finding is resolved.
+Screenshots 05–06 capture an intermediate IP-allowlisted state. Screenshot 08 adds the subnet rule, 09 establishes the container role assignment, 10–11 show actual VM reads, and 12–13 show the workstation denial and final network configuration. Screenshot 14 preserves the initially pending assessment; screenshot 15 records the later Completed status.
 
-The 34% Secure Score screenshot is a baseline only. No later score, private-link deployment, write-denial test or resource deletion is evidenced. Client deallocation is an owner confirmation recorded in the output notes, not one of these screenshots.
+The 34% screenshot is the baseline and screenshot 16 records 77% after reassessment. The changed resource population prevents attributing the entire increase to Storage remediation. Deletion of the two older VMs is owner-confirmed, not independently proven by this score screenshot. No private-link deployment or write-denial test is evidenced. Client deallocation is also an owner confirmation.
 
 Public endpoint network restriction does not imply anonymous data access was enabled before the change, or that the public endpoint is now disabled. A trusted-services exception remains.
 
