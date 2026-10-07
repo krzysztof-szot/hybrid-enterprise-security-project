@@ -1,0 +1,16 @@
+# Local exports
+local-output/
+
+# Secrets and credentials
+*.secret
+*.pfx
+*.p12
+*.pem
+*.key
+*.env
+.env
+.env.*
+
+# Temporary files
+*.tmp
+*.log
