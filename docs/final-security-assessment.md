@@ -65,11 +65,3 @@ Priorities below are assessment judgments, not Microsoft severity ratings. P1 me
 | R08 / P2 | Full final policy/rule exports, patch inventory and several control-level checks are missing. Portal reports can conceal incomplete coverage. | Export sanitized configuration baselines, review drift and validate selected controls on the final OS build. | Versioned exports, patch inventory and reproducible regression results |
 
 For R02, Microsoft recommends marking devices without an assigned compliance policy Not compliant when compliance is used with Conditional Access. Review assignment impact and recovery access before changing the lab. [Microsoft Intune compliance policy settings](https://learn.microsoft.com/en-us/intune/device-security/compliance/overview).
-
-## Closure decision
-
-The planned educational implementation, recorded tests and final assessment are complete. Further work is optional unless the environment will remain operational or be extended toward production use. Retaining live resources is a separate cost and ownership decision.
-
-The project demonstrates practical troubleshooting, scoped authorization, negative tests, evidence-based investigation and recovery. The strongest portfolio examples are the Day 15 capstone, Day 13 Storage remediation and reassessment, Day 11 workload-identity authorization and Day 03 local privilege/LAPS controls.
-
-Operational closure remains **not executed**: current billing/licensing verification and the decision about retained resources belong to the owner. Follow the [resource and cost plan](resource-retention-plan.md). Documentation completion does not claim that the subscription is empty, free of charges or safe for production.
