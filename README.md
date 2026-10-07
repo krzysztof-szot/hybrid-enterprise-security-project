@@ -1,6 +1,6 @@
 <h1 align="center">Microsoft Hybrid Enterprise Security Project</h1>
 
-<p align="center"><strong>Baltic Finance · Active Directory · Endpoint Security · Azure</strong></p>
+<p align="center"><strong>Active Directory · Endpoint Security · Azure</strong></p>
 
 <p align="center">
   <img alt="15 documented labs" src="https://img.shields.io/badge/LABS-15%20DOCUMENTED-6f42c1?style=for-the-badge">
