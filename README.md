@@ -413,7 +413,6 @@ Passwords, DSRM credentials, tokens, recovery secrets, VM disks and installation
 | Path | Contents |
 |---|---|
 | [README.md](README.md) | Project overview, architecture, lab index and featured evidence |
-| [PROJECT-PLAN.md](PROJECT-PLAN.md) | Milestone scope, completion status and recorded dependencies |
 | [docs/](docs/) | Day 01–15 implementation notes, final assessment and resource/cost plan |
 | [tests/](tests/) | Test procedures, observed results, evidence limits and final repository review |
 | [evidence/](evidence/) | 143 screenshots, per-day descriptions and selected console excerpts |
