@@ -35,17 +35,20 @@ The private .test namespace is reserved for testing. Cloud UPN planning remains 
 ### Organizational units
 
 ```text
-BFL
-├── Users
-│   ├── Finance
-│   ├── IT
-│   └── Security
-├── Computers
-│   ├── Workstations
-│   └── Servers
-├── Service Accounts
-├── Admins
-└── Groups
+graph TD
+    BFL["BFL"]
+    BFL --> Users["Users"]
+    BFL --> Computers["Computers"]
+    BFL --> ServiceAccounts["Service Accounts"]
+    BFL --> Admins["Admins"]
+    BFL --> Groups["Groups"]
+
+    Users --> Finance["Finance"]
+    Users --> IT["IT"]
+    Users --> Security["Security"]
+
+    Computers --> Workstations["Workstations"]
+    Computers --> Servers["Servers"]
 ```
 
 Eleven custom OUs were created. Protection was verified True for the first ten; the Groups creation command explicitly enabled protection, but its property was not separately re-queried. BFL-DC01 remains in the built-in Domain Controllers OU; Servers is intended for member servers.
