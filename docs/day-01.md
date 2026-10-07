@@ -34,7 +34,7 @@ The private .test namespace is reserved for testing. Cloud UPN planning remains 
 
 ### Organizational units
 
-```text
+```mermaid
 graph TD
     BFL["BFL"]
     BFL --> Users["Users"]
