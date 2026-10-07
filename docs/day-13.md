@@ -173,7 +173,7 @@ The client role assignment and network changes remain in place. Client deallocat
 
 ## Follow-up
 
-The Day 13 recommendation-status and score follow-up is now documented. Retain screenshots 03 and 14 as historical baseline/pending evidence alongside 15 and 16. Proceed to the final security assessment using the remaining findings and recorded limitations; Days 14 and 15 are documented separately as completed exercises. No further Azure changes were performed as part of this documentation update.
+The Day 13 recommendation-status and score follow-up is now documented. Retain screenshots 03 and 14 as historical baseline/pending evidence alongside 15 and 16. The [final security assessment](final-security-assessment.md) now consolidates the remaining findings and recorded limitations; Days 14 and 15 are documented separately as completed exercises. No further Azure changes were performed as part of this documentation update.
 
 ## References
 

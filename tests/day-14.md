@@ -34,4 +34,4 @@ PASS is limited to the recorded procedures. The test did not establish malicious
 
 No unrelated-resource negative test or post-disable tag-write test was performed. No rule JSON or final diagnostic-settings export was supplied. The observed approximately 7-minute-42-second event-to-alert interval is one result, not an SLA. Exact saved determination and resolution note were not visible.
 
-The rule is disabled; collection resources remain. Day 13 Defender reassessment remains unverified.
+The rule is disabled; collection resources remain. Day 13 reassessment was outside this session; its later result is recorded in the [2026-10-07 follow-up](../docs/day-13.md#reassessment-follow-up).

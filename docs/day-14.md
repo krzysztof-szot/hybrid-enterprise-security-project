@@ -196,13 +196,13 @@ The incident was reviewed as an authorized test. Guidance selected Informational
 - Rule disablement was verified in the portal; no subsequent tag write was performed to test absence of alerts.
 - No full rule JSON export, final diagnostic-settings export, final connector Connected screenshot or ingestion-latency measurement was collected. Actual rows and a matching alert establish the tested data flow.
 - The trial banner was reviewed. M365 E5 is not an unlimited Sentinel entitlement; exact E5 benefit eligibility, trial expiry, retention settings and actual charges were not verified. Azure Activity is documented as a free ingestion source, which does not establish that all retained workspace services are free.
-- The Day 13 Defender reassessment remains pending; Day 14 does not resolve that separate finding.
+- Day 13 reassessment was pending during this session. The later [2026-10-07 follow-up](day-13.md#reassessment-follow-up) records the recommendation as Completed and Secure Score 77%; this was not a Day 14 test.
 
 ## Lessons and next step
 
 Validate service availability before choosing a workspace region. Inspect actual schema values before writing narrow filters: _ResourceId supplied the target when ResourceGroup and ResourceId did not. Distinguish event grouping into alerts from alert grouping into incidents, and account for overlapping lookback windows. Classify an accurate benign test as such rather than presenting it as a real compromise.
 
-Next: plan the Day 15 capstone using resources and telemetry that are actually available. Re-enable this demonstration rule only if the next authorized scenario needs it.
+Follow-up: the [Day 15 capstone](day-15.md) is complete and both demonstration rules remain Disabled. The [final assessment](final-security-assessment.md) records project closure and residual risks.
 
 ## References
 

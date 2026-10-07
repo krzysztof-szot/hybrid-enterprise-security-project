@@ -44,8 +44,8 @@ All actions were performed manually by the owner. PASS refers to the specific ob
 - Complete analytics-rule JSON, all compliance-group members, final compliance settings export or sign-in Device ID correlation.
 - MDE alerting or endpoint response in this capstone; no Sentinel ingestion/incident for the compliance scenario.
 - Existing-session revocation timing, guaranteed detection latency, full app coverage, actual costs or current license expiry.
-- Day 13 Defender reassessment or Secure Score improvement.
+- Day 13 Defender reassessment or Secure Score improvement during this session; the separate [later follow-up](../docs/day-13.md#reassessment-follow-up) records those observations.
 
 ## Final state
 
-Sara's test access was removed and denial verified. Incident ID 5 and both alerts are resolved; the rule is Disabled. BFL-WKS02 is Compliant, Outlook works and the applicable compliant-device CA control evaluates successfully. Day 13 reassessment and the final security assessment remain separate follow-up work.
+Sara's test access was removed and denial verified. Incident ID 5 and both alerts are resolved; the rule is Disabled. BFL-WKS02 is Compliant, Outlook works and the applicable compliant-device CA control evaluates successfully. The subsequent [Day 13 reassessment](../docs/day-13.md#reassessment-follow-up) and [final security assessment](../docs/final-security-assessment.md) are documented separately.

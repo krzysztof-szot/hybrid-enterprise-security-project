@@ -1,37 +1,52 @@
-# WORK IN PROGRESS
+# Hybrid Enterprise Security Project — Baltic Finance
 
-# hybrid-enterprise-security-project
+A practical Microsoft security lab connecting local Active Directory, Entra ID, Intune and Azure. Built and operated manually by the project owner for the fictional organization **Baltic Finance**.
 
-A hands-on Microsoft hybrid security lab for the fictional organization **Baltic Finance**. The lab is built and operated manually by the project owner, with guided review and troubleshooting.
+**Status: completed educational scope — Days 01–15 and final security assessment.**  
+Documentation closure: **2026-10-07**. Published evidence: **143 screenshots**, daily test records and selected console output. Cloud resource retirement has not been performed as part of closure.
 
-## Current status
+## Start here
 
-**Days 01–12: recorded functional scope completed. Day 13: functional tests completed; recommendation Completed and Secure Score reassessment recorded. Day 14: recorded Sentinel ingestion, detection and incident-handling scope completed. Day 15: both capstone scenarios completed and verified. Documentation updated: 2026-10-07.**
+- [Final security assessment](docs/final-security-assessment.md): verified controls, residual risks and production improvements.
+- [Day 15 capstone](docs/day-15.md): role grant → Sentinel investigation → access removal; noncompliance → Conditional Access block → recovery.
+- [Day 13 posture review](docs/day-13.md): Storage network hardening, functional verification and later recommendation reassessment.
+- [Resource retention and cost plan](docs/resource-retention-plan.md): decisions for the owner before the reported Azure credit expiry.
+- [Final repository review](tests/final-review.md) and [project roadmap](PROJECT-PLAN.md).
 
-Implemented: one local Windows Server 2025 domain controller, AD DS, DNS, organizational units, users, security groups, and external time synchronization. Day 02 adds a domain-joined Windows 11 workstation, scoped GPOs, password/lockout policy, session-lock testing, Finance share authorization and mapping, and local administrator group management. Day 03 adds a tested administrative identity, encrypted Windows LAPS, group-change auditing and a working gMSA task. Day 04 connects the existing Entra tenant through a Cloud Sync pilot; Anna's cloud login with her AD password succeeded (owner-confirmed). Day 05 diagnoses a controlled group-scope exclusion, verifies creation after correction and propagates the test account's disabled state to Entra ID. Day 06 adds BFL-WKS02 as a separate Entra-joined, Intune-managed workstation with Corporate ownership and Anna as primary user. Day 07 adds tested five-minute session lock, enforced Edge SmartScreen with a blocked-site test, and a tailored Windows 25H2 security baseline on BFL-WKS02. Day 08 adds pilot compliance and Conditional Access, with Outlook access allowed, blocked after controlled OS-version noncompliance, and restored while the policy remains On. Day 09 adds dedicated antivirus, firewall, BitLocker and ASR policies with selected functional tests, plus MDE onboarding, managed Tamper Protection and manual BitLocker key rotation. Day 10 validates Azure RBAC through tag-write allow/deny, Defender for Cloud read access and Blob data read/write/revocation tests. Its temporary Storage account and resource group were cleaned up. Existing Azure resources visible in the subscription were not deployed or remediated during Day 10; Sentinel is documented separately in Day 14. Day 11 validates Key Vault access through a new Automation system-assigned managed identity: initial read denial, authorized read, write denial and read denial after role removal. Day 12 validates private HTTP connectivity between two new Azure subnets, a targeted NSG deny, matching-rule diagnostics and restored access. Both test VMs were subsequently Stopped (deallocated), owner-confirmed. Day 13 reviews Defender for Cloud posture and restricts an existing Storage account to selected networks. The client VM's managed identity successfully reads the existing blob before and after removal of the workstation IP rule; the workstation subsequently receives HTTP 403. The client was deallocated again after testing. The later Defender view shows the Storage recommendation as Completed. Secure Score reached 77% on 2026-10-07 from a 34% baseline; the owner attributes the increase mainly to removal of two older VMs, not solely to Storage hardening. Day 14 adds law-bfl-sentinel in North Europe, subscription Azure Activity collection, a tested KQL rule and a real incident from an authorized workspace tag change. Incident ID 3 and both alerts were resolved as Benign Positive; the demonstration rule is now Disabled. Day 15 connects Azure RBAC changes to a Sentinel investigation and manual access revocation, then validates endpoint noncompliance → Conditional Access denial → compliance and access restoration. Incident ID 5 is resolved, Sara's test Reader assignment is removed, both demonstration rules are Disabled, and BFL-WKS02 is Compliant with a successful Outlook sign-in and CA evaluation.
+## Demonstrated outcomes
 
-- [Day 01 implementation and troubleshooting](docs/day-01.md)
-- [Day 01 test record](tests/day-01.md)
-- [Evidence inventory and screenshot checklist](evidence/day-01/README.md)
-- [Selected actual console output](evidence/day-01/console-excerpts.md)
-- [Day 02 implementation and troubleshooting](docs/day-02.md)
-- [Day 02 test record](tests/day-02.md)
-- [Day 02 screenshots and descriptions](evidence/day-02/README.md)
-- [Day 02 console evidence](evidence/day-02/console-excerpts.md)
-- [Day 03 implementation](docs/day-03.md) · [Tests](tests/day-03.md) · [Evidence](evidence/day-03/README.md)
-- [Day 04 implementation](docs/day-04.md) · [Tests](tests/day-04.md) · [Evidence](evidence/day-04/README.md)
-- [Day 05 troubleshooting](docs/day-05.md) · [Tests](tests/day-05.md) · [Evidence](evidence/day-05/README.md)
-- [Day 06 Entra join and Intune enrollment](docs/day-06.md) · [Tests](tests/day-06.md) · [Evidence](evidence/day-06/README.md)
-- [Day 07 configuration and baseline](docs/day-07.md) · [Tests](tests/day-07.md) · [Evidence](evidence/day-07/README.md)
-- [Day 08 compliance and Conditional Access](docs/day-08.md) · [Tests](tests/day-08.md) · [Evidence](evidence/day-08/README.md)
-- [Day 09 endpoint security and MDE](docs/day-09.md) · [Tests](tests/day-09.md) · [Evidence](evidence/day-09/README.md)
-- [Day 10 Azure RBAC and Blob access](docs/day-10.md) · [Tests](tests/day-10.md) · [Evidence](evidence/day-10/README.md)
-- [Day 11 Key Vault and managed identity](docs/day-11.md) · [Tests](tests/day-11.md) · [Evidence](evidence/day-11/README.md)
-- [Day 12 Azure networking and NSG filtering](docs/day-12.md) · [Tests](tests/day-12.md) · [Evidence](evidence/day-12/README.md)
-- [Day 13 Defender for Cloud and Storage network access](docs/day-13.md) · [Tests](tests/day-13.md) · [Evidence](evidence/day-13/README.md)
-- [Day 14 Azure Activity, KQL and Sentinel](docs/day-14.md) · [Tests](tests/day-14.md) · [Evidence](evidence/day-14/README.md)
-- [Day 15 capstone: RBAC response and compliant-device access](docs/day-15.md) · [Tests](tests/day-15.md) · [Evidence](evidence/day-15/README.md)
-- [Project roadmap](PROJECT-PLAN.md)
+| Security objective | Recorded outcome |
+|---|---|
+| Restrict access by role and scope | Finance share, workstation administration, Blob and Key Vault allow/deny tests; selected access revocation tests |
+| Manage hybrid identities and endpoints | Group-scoped Cloud Sync, controlled provisioning fault/recovery, separate Entra join, Intune enrollment and policies |
+| Enforce device-based access | Outlook allowed when compliant, blocked during deliberate OS-version noncompliance, restored with the intended CA policy succeeding |
+| Validate endpoint protections | SmartScreen block, quarantine after an EICAR exercise, firewall block/recovery, ASR audit/block and manual BitLocker key rotation |
+| Investigate and respond | Azure Activity detection, exact role-assignment investigation, manual revocation and resolved benign test incidents |
+| Review cloud posture | Selected Storage recommendation Completed; Secure Score 34% → 77% after reassessment |
+
+The Secure Score increase is **43 percentage points**, largely attributed by the owner to deletion of two older VMs no longer needed for licensing reasons. Exact contributions were not measured. The increase is not presented as a Storage-hardening gain alone or as a comprehensive security rating.
+
+## Milestones and evidence
+
+Each milestone links implementation, tests and an evidence page with individual screenshot descriptions.
+
+| Day | Milestone | Implementation | Tests | Evidence |
+|---|---|---|---|---|
+| 01 | AD DS, DNS and lab foundation | [Notes](docs/day-01.md) | [Results](tests/day-01.md) | [Screenshots](evidence/day-01/README.md) |
+| 02 | GPO scope and resource authorization | [Notes](docs/day-02.md) | [Results](tests/day-02.md) | [Screenshots](evidence/day-02/README.md) |
+| 03 | Administrative access, LAPS and gMSA | [Notes](docs/day-03.md) | [Results](tests/day-03.md) | [Screenshots](evidence/day-03/README.md) |
+| 04 | Entra Cloud Sync pilot | [Notes](docs/day-04.md) | [Results](tests/day-04.md) | [Screenshots](evidence/day-04/README.md) |
+| 05 | Hybrid identity troubleshooting | [Notes](docs/day-05.md) | [Results](tests/day-05.md) | [Screenshots](evidence/day-05/README.md) |
+| 06 | Entra join and Intune enrollment | [Notes](docs/day-06.md) | [Results](tests/day-06.md) | [Screenshots](evidence/day-06/README.md) |
+| 07 | Configuration profiles and security baseline | [Notes](docs/day-07.md) | [Results](tests/day-07.md) | [Screenshots](evidence/day-07/README.md) |
+| 08 | Compliance and Conditional Access | [Notes](docs/day-08.md) | [Results](tests/day-08.md) | [Screenshots](evidence/day-08/README.md) |
+| 09 | Endpoint protection and MDE onboarding | [Notes](docs/day-09.md) | [Results](tests/day-09.md) | [Screenshots](evidence/day-09/README.md) |
+| 10 | Azure RBAC and Blob authorization | [Notes](docs/day-10.md) | [Results](tests/day-10.md) | [Screenshots](evidence/day-10/README.md) |
+| 11 | Key Vault and managed identity | [Notes](docs/day-11.md) | [Results](tests/day-11.md) | [Screenshots](evidence/day-11/README.md) |
+| 12 | Azure networking and NSG filtering | [Notes](docs/day-12.md) | [Results](tests/day-12.md) | [Screenshots](evidence/day-12/README.md) |
+| 13 | Defender for Cloud and Storage hardening | [Notes](docs/day-13.md) | [Results](tests/day-13.md) | [Screenshots](evidence/day-13/README.md) |
+| 14 | Azure Activity, KQL and Sentinel | [Notes](docs/day-14.md) | [Results](tests/day-14.md) | [Screenshots](evidence/day-14/README.md) |
+| 15 | Capstone: RBAC response and device-based access | [Notes](docs/day-15.md) | [Results](tests/day-15.md) | [Screenshots](evidence/day-15/README.md) |
 
 ## Implemented architecture
 
@@ -67,34 +82,19 @@ Day 13 reuses the client subnet through a Microsoft.Storage service endpoint and
 
 Day 14 streams subscription Activity logs through Azure Policy-deployed diagnostic settings into law-bfl-sentinel in rg-bfl-sentinel-lab, North Europe. A scheduled rule detected a successful workspace tag write and generated grouped alerts in Defender incident ID 3. The incident is resolved and the rule disabled; collection resources are retained.
 
-## Remaining target architecture
 
-The AD-to-Entra pilot and enrollment of BFL-WKS02 into Intune are implemented. Pilot configuration profiles and a tailored Windows baseline are deployed. Pilot compliance and Conditional Access are validated for Anna's Outlook sign-ins. Dedicated endpoint policies and MDE onboarding are implemented for BFL-WKS02. Azure RBAC and selected data-access tests are completed. Key Vault managed-identity read, write-denial and revocation tests are completed. Azure VNet/subnet and NSG allow/deny/restore tests are completed. Day 13 Storage remediation, functional validation and later Completed recommendation status are recorded, together with a 77% Secure Score follow-up. Day 14 validates Azure Activity ingestion, scheduled detection and manual incident resolution. Day 15 completes the selected capstone workflows: Reader grant → Sentinel alert → exact-assignment investigation → removal and denial; compliant-device access → deliberate OS-version noncompliance → CA block → recovery with CA Success. Remaining stage: final security assessment. BFL-WKS01 remains AD joined; BFL-WKS02 is Entra joined and is not hybrid joined.
+## Final recorded state
 
-The project emphasizes least privilege, justified security settings, positive and negative tests, log verification, troubleshooting, and cost control.
+Sara's Day 15 Reader assignment was removed and resource-group read denial verified. Sentinel incidents 3 and 5 are resolved as Benign Positive; both demonstration rules are Disabled. Azure Activity collection resources remain. BFL-WKS02 is Compliant and Outlook/Conditional Access Success is recorded. The Day 12 VMs were confirmed deallocated by the owner; deletion is not claimed.
 
-## Evidence and limitations
+BFL-WKS01 remains AD joined. BFL-WKS02 is Entra joined, not hybrid joined. The local identity environment uses one DC and one Cloud Sync agent. Pilot tests do not establish tenant-wide coverage.
 
-PASS applies only to tests actually performed and supported by supplied output. Published console excerpts were transcribed from the owner's session; they are not new automated test runs. Seven Day 01, ten Day 02, seven Day 03, six Day 04, three Day 05, three Day 06, five Day 07, eight Day 08, sixteen Day 09, thirteen Day 10, seven Day 11, eight Day 12, sixteen Day 13, twelve Day 14 and twenty-two Day 15 screenshots are published. Client logon, GPO scope, Finance allow/deny access and drive mapping were tested. The session-lock test is an owner observation. adm.onprem now belongs to GG-Workstation-Admins and passed a workstation administration test. Cloud Sync group membership checks, preservation of old cloud accounts and Anna's cloud login are owner confirmations; Day 04 exported cloud logs were not supplied. Day 05 includes a provisioning-log screenshot and copied export text showing AccountEnabled=False; denied login and session revocation were not tested.
+## Evidence boundaries
 
-Day 06 screenshots confirm join status, Intune management, Corporate ownership and primary user. Scope saving and license assignment are owner-confirmed. The displayed Compliant badge does not establish custom compliance-policy enforcement. An existing M365 E5 trial was used; the owner reported approximately three weeks remaining on 2026-10-02.
+The owner executed the technical tests. Documentation updates are not new runtime tests. Daily records distinguish screenshots, supplied output and owner confirmations; PASS applies only to the stated check.
 
-Day 07 combines Intune reports, effective Edge policies, a blocked demonstration page and owner-observed lock/regression tests. Baseline Success does not prove every control; final full configuration export and snapshot recovery were not verified. Dedicated antivirus, firewall, ASR and BitLocker configuration and selected tests are recorded in Day 09.
+This is an educational lab, not a production-ready environment or security certification. Backup/restore, emergency-account access, broad policy coverage, MDE incident response and existing-session revocation timing remain untested. The [assessment](docs/final-security-assessment.md#residual-risks-and-production-improvements) prioritizes those gaps.
 
-Day 08 includes report-only evaluation, enforced success, deliberate OS-version noncompliance, denied access and recovery. Final device Compliant status, Outlook access and CA On are owner-confirmed. The tenant setting for devices without compliance policies remains Compliant; testing covers only the pilot. Emergency-account login and existing-session revocation were not tested.
+Earlier daily notes preserve what was known during each session. Later dated follow-ups and the final assessment describe subsequent outcomes. Current billing and exact trial expiry require an owner check; retained cloud resources are not assumed free. The [review record](tests/final-review.md) also identifies the limits of the publication/privacy review.
 
-Day 09 includes a quick scan, quarantine after the EICAR exercise, Edge outbound block/recovery, ASR events 1122/1121, MDE Onboarded/Active, managed Tamper Protection On and completed manual BitLocker key rotation. The obfuscated-script ASR rule remains Block; five other selected rules remain Audit. The temporary Edge block rule is Disabled. Expanded EICAR details, final firewall logging configuration, other ASR behaviors, EDR alert/response, boot recovery and automatic key rotation were not verified. Test-script cleanup was requested but not confirmed.
-
-Day 10 includes real tag-save and Blob authorization failures, a successful file download with owner-confirmed contents, and access revocation. Contributor role-assignment denial was observed in the portal UI; no API attempt was made. Final Storage configuration was not exported. Cleanup is supported by the final group inventory and the owner's confirmation of Security Reader removal. The owner reported EUR 159.53 credit remaining on 2026-10-02, expiring 2026-10-13; actual exercise costs were not measured.
-
-Day 11 uses seven screenshots to establish managed-identity authentication and operation-specific Key Vault authorization. The same read runbook failed before the role grant, completed with Key Vault Secrets User and failed after revocation; a separate secret-creation attempt was denied. No secret value was printed. Tests ran in Automation Test pane; runtime/settings exports, scheduled execution, private networking and exact propagation time were not verified.
-
-Day 12 combines actual HTTP 200 → timeout → HTTP 200 results with Network Watcher deny/allow evaluations. The diagnostic source port was selected rather than captured from the application connection. The final client NIC NSG correction was instructed but not independently exported. Both VMs were confirmed deallocated; retained disks and public IPs can still incur charges. More than EUR 156 credit remained at preparation, owner-reported on 2026-10-05, with expiry 2026-10-13. Actual costs were not measured.
-
-Day 13 records a 34% Secure Score baseline, selected-network remediation, container-scoped Storage Blob Data Reader and two HTTP 200 / 205-byte managed-identity reads. A workstation portal request returned 403 after its IP rule was removed. The follow-up shows the account's recommendation as Completed and Secure Score 77%, versus 34% initially (+43 percentage points). Active recommendations changed from 14/32 to 9/32. The owner attributes most of the increase to deletion of two older VMs for licensing reasons; exact contributions were not measured and this is not solely a Storage-hardening gain. Defender CSPM is On with Partial coverage, and the owner accepted its cost. Client deallocation is owner-confirmed. [Detailed limitations and follow-up](docs/day-13.md#results-and-limitations).
-
-Day 14 uses an authorized workspace tag change rather than a malicious action. AzureActivity ingestion and _ResourceId-based filtering were verified, followed by a scheduled alert and incident ID 3 with two grouped alerts. The final incident is Resolved / Benign Positive and both alerts are resolved. Entity mapping and automated response were not configured. The rule is Disabled; no post-disable negative test or complete configuration export was collected. Actual costs and trial-benefit eligibility were not measured. [Day 14 limitations](docs/day-14.md#final-state-and-limitations).
-
-Day 15 correlates a successful role-assignment write to a Sentinel alert and verifies Sara / Reader / resource-group scope through the exact assignment ID. After removal, current assignments are zero and resource-group read is denied. Incident ID 5 is Resolved / Benign Positive, both alerts are resolved and the rule is Disabled. The endpoint scenario isolates Minimum OS version as the failed check, records the intended CA policy's Failure, then verifies device Compliant and Outlook/CA Success after the rollback workflow. No privileged-role attack, automated response, Sentinel incident for endpoint compliance, full configuration export or session-revocation timing is claimed. [Day 15 evidence limits](docs/day-15.md#final-state-and-evidence-limits).
-
-This is a single-DC educational lab, not a production-ready or comprehensively secured environment. Passwords, DSRM credentials, tokens, VM disks, and installation media must not be committed.
+Passwords, DSRM credentials, tokens, recovery secrets, VM disks and installation media must not be committed.

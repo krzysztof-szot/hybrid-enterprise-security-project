@@ -162,11 +162,11 @@ The Azure workspace and collection configuration remain available. Disabling a r
 
 This record does not claim a compromised account, privileged-role escalation, automatic remediation, MDE incident response, resource write prevention under Reader, PIM activation, or a Sentinel alert for the compliance scenario. Existing-session revocation timing was not measured. Full compliance-group membership, sign-in Device ID matching, final policy/rule exports and exact propagation intervals were not captured. The second workflow's evidence is from Intune, the application and Entra, not from a new Sentinel connector.
 
-Day 13 recommendation reassessment and any Secure Score change remain unverified. The final project-wide security assessment is a separate remaining milestone.
+At the time of this session, Day 13 reassessment was unverified. The later [Day 13 follow-up](day-13.md#reassessment-follow-up) records Completed and Secure Score 77%. The [final assessment](final-security-assessment.md) is now documented.
 
 ## Next step
 
-Complete the final security assessment from the recorded controls, tests and limitations. Check the outstanding Day 13 recommendation separately, preserving pending status until current evidence supports a change. Review retained cloud resources, current licensing and costs before deciding on further operation.
+The educational scope and final assessment are complete. Review retained cloud resources, current licensing and costs using the [resource retention plan](resource-retention-plan.md) before deciding on further operation. No new lab changes were performed during documentation closure.
 
 ## References
 
