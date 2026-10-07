@@ -358,7 +358,6 @@ Reader grant detection, exact-assignment investigation and manual revocation, pl
 - [Final security assessment](docs/final-security-assessment.md): verified controls, residual risks and production improvements.
 - [Day 15 capstone](docs/day-15.md): role grant → Sentinel investigation → access removal; noncompliance → Conditional Access block → recovery.
 - [Day 13 posture review](docs/day-13.md): Storage network hardening, functional verification and later recommendation reassessment.
-- [Resource retention and cost plan](docs/resource-retention-plan.md): decisions for the owner before the reported Azure credit expiry.
 - [Final repository review](tests/final-review.md) and [project roadmap](PROJECT-PLAN.md).
 
 ---
